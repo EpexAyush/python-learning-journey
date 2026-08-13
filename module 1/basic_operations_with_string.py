@@ -46,5 +46,5 @@ filename = "profile_pic.PNG"
 
 print("---------Challenge 4 Output---------")
 filename= filename.lower()
-extension=filename[-4::]
-print(f"filename ends with the: \"{extension}\" extension.")
+is_valid= filename.endswith(".png") or filename.endswith(".jpg")
+print(f"Is Filename ended with .png or .jpg ? Ans is {is_valid}")
