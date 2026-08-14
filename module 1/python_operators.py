@@ -58,7 +58,7 @@ cart_total = 0
 # Task 3: Comparison (>=) ka use karke check karein ki kya cart_total 500 ya usse zyada hai.
 # Result ko 'free_delivery' naam ke variable (Boolean) mein save karein aur print karein.
 
-# Aapka code yahan likhein:
+print("-----------------------------Output:1--------------------------------")# Aapka code yahan likhein: 
 cart_total+=200+350
 cart_total-=50
 free_delivery=print(cart_total>=500)
@@ -67,8 +67,21 @@ print("\n")
 print("------------Challenge 2: The Smart Login System------------")
 user_age = 20
 is_pro_member = True
-
 # Task: Ek 'can_login' variable banayein jo True tabhi ho jab user_age 18+ ho AUR is_pro_member True ho.
 # Print karein: "Login Status: True" ya "Login Status: False"
 
-# Aapka code yahan likhein:
+print("-----------------------------Output:2-------------------------")# Aapka code yahan likhein:
+can_login= user_age>18 and is_pro_member==True
+print("Login Status:",can_login)
+
+print("\n")
+print("-----------------Challenge 3: Average Formula Fix------------")
+math_marks = 80
+sci_marks = 90
+eng_marks = 70
+# Bug: Division (/) ki precedence Addition (+) se zyada hoti hai, 
+# isliye ye sirf eng_marks ko 3 se divide kar raha hai.
+# wrong_average = math_marks + sci_marks + eng_marks / 3
+print("---------------------------Output:3---------------------------")
+correct_average= (math_marks+sci_marks+eng_marks)/3
+print(correct_average)
