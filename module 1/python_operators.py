@@ -65,9 +65,10 @@ free_delivery=print(cart_total>=500)
 
 print("\n")
 print("------------Challenge 2: The Smart Login System------------")
-Ek website par login karne ke liye do conditions hain:
+user_age = 20
+is_pro_member = True
 
-User ki age 18 ya usse badi honi chahiye.
+# Task: Ek 'can_login' variable banayein jo True tabhi ho jab user_age 18+ ho AUR is_pro_member True ho.
+# Print karein: "Login Status: True" ya "Login Status: False"
 
-User ke paas valid "Pro" subscription hona chahiye.
-Yahan aapko Comparison aur Logical (and) operators ko mix karna hai.
+# Aapka code yahan likhein:
