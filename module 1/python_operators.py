@@ -54,11 +54,20 @@ print("------------Challenge 1: The E-Commerce Checkout Logic------------")
 cart_total = 0
 
 # Task 1: User ne 200 ki T-shirt aur 350 ki Jeans add ki (+= ka use karein)
-cart_total+=200+350
 # Task 2: User ne 50 ka discount code lagaya (-= ka use karein)
-cart_total-=50
 # Task 3: Comparison (>=) ka use karke check karein ki kya cart_total 500 ya usse zyada hai.
-print(cart_total>=500)
 # Result ko 'free_delivery' naam ke variable (Boolean) mein save karein aur print karein.
 
 # Aapka code yahan likhein:
+cart_total+=200+350
+cart_total-=50
+free_delivery=print(cart_total>=500)
+
+print("\n")
+print("------------Challenge 2: The Smart Login System------------")
+Ek website par login karne ke liye do conditions hain:
+
+User ki age 18 ya usse badi honi chahiye.
+
+User ke paas valid "Pro" subscription hona chahiye.
+Yahan aapko Comparison aur Logical (and) operators ko mix karna hai.
