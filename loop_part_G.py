@@ -94,4 +94,143 @@ for num in num_9:
 
 print("\n")
 
+print("------------Question:10-------------")
+#Search for a Student
+students = ["Rahul", "Aman", "Ayush", "Riya", "Karan"]
+user_input=str(input("Enter Student Name: ")).capitalize()
+for stu in students:
+    if stu==user_input:
+        print("Student Found!")
+        break
+else:
+    print("Student Not Found!")
 
+print("\n")
+
+print("------------Question:11-------------")
+#First Even Number
+num_11 = [13, 27, 31, 45, 52, 67, 72]
+for num in num_11:
+    if num%2==0:
+        print(f"First Even Number is:{num}")
+        break
+
+print("\n")
+
+print("-------------Question:12-------------")
+#Skip Numbers Less Than 10
+num_12 = [5, 12, 8, 20, 3, 17, 25, 7, 30]
+for num in num_12:
+    if num<10:
+        continue
+    print(num)
+
+print("\n")
+
+print("-------------Question:13--------------")
+#sum except negative numbers
+num_13=[10,-5,20,-8,15,30,-2]
+total=0
+for num in num_13:
+    if num<0:
+        continue
+    total+=num
+print(f"Total: {total}")
+
+print("\n")
+
+print("-------------Question:14---------------")
+#count valid marks in between [0 to 100]
+marks= [78, -5, 92, 105, 67, 88, -10, 76]
+count=0
+total=0
+for mark in marks:
+    if mark<0 or mark>100:
+        continue
+    count+=1
+    total+=mark
+print(f"Valid Marks Count: {count}")
+print(f"Total Valid Marks: {total}")
+
+print("\n")
+
+print("------------Question:15----------------")
+#stop the loop when total exceeds 100
+num_15=[15, 20, 18, 25, 30, 40, 50]
+total_sum=0
+for num in num_15:
+    total_sum+=num
+    if total_sum>100:
+        break
+print(f"Total:{total_sum} ")
+
+print("\n")
+
+print("------------Question:16----------------")
+#Skip Zero, Stop at Negative
+num_16 = [10, 20, 0, 15, 0, 25, -5, 30, 40]
+for num in num_16:
+    if num==0:
+        continue
+    elif num<0:
+        break
+    print(num)
+
+print("\n")
+
+print("------------Question:17----------------")
+#Password Attempt user ko maximum 5 attempt dene hai fir gaand maar leni hai uski..
+correct_password="Python123"
+for attempts in range(5,0,-1):
+    user_input=input("Enter Password: ")
+    if user_input==correct_password:
+        print("Access Granted ✅")
+        break
+    else:
+        print("Incorrect Password ❌")
+else:
+    print("Systum locked!")
+
+print("\n")
+
+print("-----------Question:18-----------------")
+#Find First Divisible by 7
+num_18= [11, 23, 34, 45, 52, 63, 71, 84]
+for num in num_18:
+    if num%7==0:
+        print(num)
+        break
+print("\n")
+
+print("-----------Question:19-----------------")
+#Skip and Count negative and zeros
+num_19=[12, -4, 18, 0, 25, -7, 30, 0, 45]
+total=0
+count=0
+for num in num_19:
+    if num<0:
+        continue
+    elif num==0:
+        continue
+    elif num>0:
+        total+=num
+        count+=1
+print(f"Positive Count: {count}")  
+print(f" Positive Total: {total}")
+
+print("\n")
+
+print("-----------Question:20----------------")
+#Transaction Processing
+balance=0
+transactions = [500, -200, 300, 0, -100, 700, 1200, -50]
+for trans in transactions:
+    if balance>1000:
+        break
+    elif trans>0:
+        balance+=trans
+    elif trans<0:
+        balance+=trans
+    elif trans==0:
+        continue
+print(f"Final Balance: {balance}")
