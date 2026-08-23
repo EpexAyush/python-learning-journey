@@ -161,9 +161,16 @@ print(f"4. Reverse Order: {numbers}")
 
 #5:Use index() to find the position of a user-entered number
 user_input=int(input("Enter a number to find index: "))
-print(f"\033[1A\033[2K\r5. Index of {user_input} is {numbers.index(user_input)} ")
+if user_input in numbers:
+    print(f"\033[1A\033[2K\r5. Index of {user_input} is {numbers.index(user_input)} ")
+else:
+    print("\033[1A\033[2K\r5. This number is not present in the list.")
 
 #6:Use copy() to create a duplicate of the final list.
 import copy
 copy_numbers_list= copy.copy(numbers)
 print(f"6. Copied List of numbers: {copy_numbers_list}")
+
+#7:clear the list using clear()
+numbers.clear()
+print(f"7. cleared list: {numbers}")
