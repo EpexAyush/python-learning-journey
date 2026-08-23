@@ -199,3 +199,34 @@ print(f"10. Maximum marks is {max(marks_student)} and Minimum marks is {min(mark
 print("--------------------------------------------------------------\n")
 
 print("-------------Queston:5B------------")
+#Student Marks Tuple Analysis
+marks_tup = (78, 65, 89, 92, 65, 74, 81, 90, 65, 88)
+print(f"1. Length of the marks tuple: {len(marks_tup)}")
+print(f"2. How many students scored 65 marks: {marks_tup.count(65)}")
+print(f"3. Position of 92 in the tuple is: {marks_tup.index(92)}")
+print(f"4. The highest marks is {max(marks_tup)} and Lowest marks is {min(marks_tup)}")
+print(f"5. Sum of all the marks: {sum(marks_tup)}")
+print(f"6. Average marks: {sum(marks_tup)/len(marks_tup)}")
+sorted_tuple=tuple(sorted(marks_tup))
+print(f"7. Sort the tuple in the Ascending Order: {sorted_tuple}")
+reversed_tuple=marks_tup[::-1]
+print(f"8. Reversed Order of the tuple using slicing: {reversed_tuple} ")
+print("--------------------------------------------------------------\n")
+
+print("-------------Queston:5C------------")
+# Employee ID Tuple
+employee_ids = (101, 105, 103, 101, 108, 110, 105, 115)
+print(f"1. Total Employees: {len(set(employee_ids))}")
+print(f"2. How many times ID 101 occurs: {employee_ids.count(101)}")
+print(f"3. Position of ID 108: {employee_ids.index(108)}")
+user_input=int(input("4. Enter a Emp ID: "))
+if user_input in employee_ids:
+    print(f"\033[1A\033[2K\r4. Yes!, Emp ID present in our Database. ")
+else:
+    print("\033[1A\033[2K\r4. Emp ID not found in Database.")
+print(f"5. Smallest Emp ID is {min(employee_ids)} and Largest Emp ID is {max(employee_ids)}")
+sorted_emp_id= tuple(sorted(employee_ids))
+print(f"6. Sorted Emp IDs: {sorted_emp_id}")
+reversed_emp_ids= tuple(reversed(employee_ids))
+print(f"7. Reverse Order of Emp IDs: {reversed_emp_ids}")
+print("--------------------------------------------------------------\n")
