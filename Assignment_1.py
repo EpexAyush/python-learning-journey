@@ -285,4 +285,40 @@ print("--------------------------------------------------------------\n")
 
 print("-------------Queston:5E------------")
 #Tuple-Based Sales Analysis
-sales = (25000, 32000, 28000, 45000, 32000,50000, 28000, 45000, 52000, 32000)
+sales_tuple = (25000, 32000, 28000, 45000, 32000,50000, 28000, 45000, 52000, 32000)
+
+#1:Find the total annual sales using sum()
+print(f"1. Total Annual Sales: {sum(sales_tuple)}")
+
+#2:Find the average monthly sales.
+print(f"2. Average Monthly Sales: {sum(sales_tuple)/len(sales_tuple)}")
+
+#3:Find the highest monthly sales and minimum sales
+print(f"3. Highest monthly sales is {max(sales_tuple)} and minimum monthly sales is {min(sales_tuple)}")
+
+#4:Find the number of months using len()
+print(f"4. Sales data of how many months: {len(sales_tuple)}")
+
+#5:Count how many months had sales of 32000
+print(f"5. How many times 32000 sale appears: {sales_tuple.count(32000)}")
+
+#6:Find the first month/index where sales were 50000
+print(f"6. Index of 50000 in the sales tuple is: {sales_tuple.index(50000)}")
+
+#7:Sort the sales using sorted()
+sort_sales=tuple(sorted(sales_tuple))
+print(f"7. Sorted in Ascending Order: {sort_sales}")
+
+#8:Display the top 3 sales values
+set_conv= set(sort_sales)
+conv_tuple=tuple(set_conv)
+sorted_conv_tuple=tuple(sorted(conv_tuple))
+print(f"8. Top 3 sales values are: {sorted_conv_tuple[0:3]}")
+
+#9:Display the sales in descending order
+desc_sales_order=tuple(sorted(sales_tuple,reverse=True))
+print(f"9. Decresing Order of the sales: {desc_sales_order}")
+
+#10:Display sales for the first six months using slicing
+print(f"10. Sales of first 6 months using slicing: {sales_tuple[0:6]}")
+print("--------------------------------------------------------------")
