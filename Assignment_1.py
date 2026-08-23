@@ -230,3 +230,59 @@ print(f"6. Sorted Emp IDs: {sorted_emp_id}")
 reversed_emp_ids= tuple(reversed(employee_ids))
 print(f"7. Reverse Order of Emp IDs: {reversed_emp_ids}")
 print("--------------------------------------------------------------\n")
+
+print("-------------Queston:5D------------")
+# Product Price Tuple
+prices = (450, 1200, 750, 450, 999, 1500, 750, 2000)
+print(f"1. Total Price: {sum(prices)}")
+print(f"2. Average Price: {sum(prices)/len(prices)}")
+print(f"3. Minimum price is {min(prices)} and Maximum price is {max(prices)}")
+print(f"4. How many Products cost 450: {prices.count(450)}")
+print(f"5. position of the first product costing 750: {prices.index(750)}")
+sorted_prices= tuple(sorted(prices))
+print(f"6. Sorted Order: {sorted_prices}")
+desc_prices=tuple(sorted(prices,reverse=True))
+print(f"7. Descending Order: {desc_prices}")
+print(f"8. First Three Prices Using Slicing: {prices[0:3]}")
+print(f"9. Last three prices using slicing: {prices[-1:-4:-1]}")
+print("--------------------------------------------------------------\n")
+
+print("-------------Queston:5D------------")
+#Subject Tuple Processing
+subjects = ("Python", "Java", "C++", "Python","DBMS", "Java", "AI", "Python")
+
+#1:Display total number of the subjects
+print(f"1. Total number of subjects: {len(set(subjects))}")
+
+#2:Count the occurrence of "Python"
+print(f"2. How many times 'Python' Comes: {subjects.count("Python")}")
+
+#3:Find the first position of "Java"
+print(f"3. Index of 'JAVA': {subjects.index("Java")}")
+
+#4:Check whether "AI" exists.
+print(f"4. Is AI exist in the tuple?: {"AI" in subjects}")
+
+#5:Display the tuple in reverse order
+rever_sub=tuple(reversed(subjects))
+print(f"5. Reversed Ordedr of the tuple: {subjects}")
+
+#6:Display the Subjects from index 2 to 6.
+print(f"6. Subjects from index 2 to 6: {subjects[2:7]}")
+
+#7:Convert Tuple into List
+new_list_tuple=list(subjects)
+print(f"7. Tuple {subjects} converted into List {new_list_tuple}")
+
+#8:Add a new subject to the list
+new_list_tuple.append("English")
+print(f"8. Added English in the list: {new_list_tuple}")
+
+#9:Conveted a list back into the tuple:
+updated_tuple=tuple(new_list_tuple)
+print(f"9. Now the updated tuple is: {updated_tuple}")
+print("--------------------------------------------------------------\n")
+
+print("-------------Queston:5E------------")
+#Tuple-Based Sales Analysis
+sales = (25000, 32000, 28000, 45000, 32000,50000, 28000, 45000, 52000, 32000)
