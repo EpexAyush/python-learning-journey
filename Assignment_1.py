@@ -176,7 +176,7 @@ numbers.clear()
 print(f"7. cleared list: {numbers}")
 print("--------------------------------------------------------------\n")
 
-print("-------------Queston:5------------")
+print("-------------Queston:5A------------")
 #Student Result Analysis
 marks_student = [56, 78, 90, 45, 67, 78, 89, 92, 56, 78]
 marks_student.extend([67,89])
@@ -195,3 +195,7 @@ marks_student.reverse()
 print(f"8. Reverse the order of the marks list: {marks_student}")
 student_marks_copy=copy.copy(marks_student)
 print(f"9. Copied file of student marks: {student_marks_copy}")
+print(f"10. Maximum marks is {max(marks_student)} and Minimum marks is {min(marks_student)}")
+print("--------------------------------------------------------------\n")
+
+print("-------------Queston:5B------------")
