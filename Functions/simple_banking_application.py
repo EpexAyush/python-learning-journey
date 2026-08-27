@@ -1,4 +1,4 @@
-def check_balance():
+'''def check_balance():
     print(f"Current Balance is: {balance}")
 
 
@@ -61,4 +61,18 @@ while True:
 print("-----------------------------------------------")
 print("Thank you for using our banking application.")
 print("-----------------------------------------------")
-     
+'''
+
+
+
+x=2
+y=8
+z=x+y/2
+print(x+z)
+print("-----------")
+x=2
+y=8
+z=x+y//2
+
+print(x+z)
+print("----------")
