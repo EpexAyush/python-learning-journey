@@ -22,5 +22,3 @@ def print_1_to_n(n):
 # Function call
 print_1_to_n(4)
 print("--------------------------------\n")
-print("------------Question:3---------------")
-def 
