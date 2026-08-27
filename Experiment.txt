@@ -1,0 +1,8 @@
+------------------About Myself--------------------
+1: Name: Ayush Kumar
+2: Age: 21
+3: Course: BS Computer Science & Data Analytics
+4: College: Indian Institute of Technology Patna.
+5: Address: Delhi NCR
+6: Experience: Intern India Space Academy
+---------------------------------------------------
