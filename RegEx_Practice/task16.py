@@ -12,4 +12,4 @@ print(f"Pattern 2 First Match: {re.search(pattern_2,text).group()} and span: {re
 
 pattern_3=r"[A-Z][a-z]\s"
 # here "\s" matches white space characters like \n,\t or general space.
-print(f"Pattern 3 First Match: {re.search(pattern_3,text)}")
+print(f"Pattern 3 First Match: {re.search(pattern_3,text) }")
