@@ -34,3 +34,10 @@ print(f"Pattern 2: {all_results_pat_2}")
 print(f"Pattern 3: {all_results_pat_3}")
 
 # -----------------------------------------------------
+
+text="A:9876543210 B:9123456789 C:1234567 D:121 E:12345678910"
+pattern=r"\b\d{10}\b"
+match_result=re.findall(pattern,text)
+print(f"Result: {match_result}")
+
+#--------------------------------------------------------
