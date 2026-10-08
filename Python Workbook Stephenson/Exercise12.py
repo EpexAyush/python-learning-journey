@@ -11,3 +11,7 @@ earth_radius=6371.01 #unit is in km.
 distance=earth_radius*math.acos(math.sin(lat_1)*math.sin(lat_2)+math.cos(lat_1)*math.cos(lat_2)*math.cos(long_1-long_2))
 
 print(f"The distance between the point 1 and point 2 is {distance} km")
+
+
+
+
