@@ -1,0 +1,2316 @@
+FILE / MODULE
+├── Module documentation
+│   └── Wrapper functions for Tcl/Tk.
+
+Tkinter provides classes which allow the display, positioning and
+control of widgets. Toplevel widgets are Tk and Toplevel. Other
+widgets are Frame, Label, Entry, Text, Canvas, Button, Radiobutton,
+Checkbutton, Scale, Listbox, Scrollbar, OptionMenu, Spinbox,
+LabelFrame and PanedWindow.
+
+Properties of the widgets are specified with keyword arguments.
+Keyword arguments have the same name as the corresponding options
+under Tk.
+
+Widgets are positioned with one of the geometry managers Place, Pack
+or Grid. These managers can be called with methods place, pack, grid
+available in every Widget.
+
+Actions are bound to events by options (e.g. the command
+keyword argument) or with the bind() method.
+
+Example (Hello, World):
+import tkinter
+from tkinter.constants import *
+tk = tkinter.Tk()
+frame = tkinter.Frame(tk, relief=RIDGE, borderwidth=2)
+frame.pack(fill=BOTH, expand=1)
+label = tkinter.Label(frame, text="Hello, World")
+label.pack(fill=X, expand=1)
+button = tkinter.Button(frame, text="Exit", command=tk.destroy)
+button.pack(side=BOTTOM)
+tk.mainloop()
+├── Imports
+│   ├── Line 33: import collections
+│   ├── Line 34: import enum
+│   ├── Line 35: import sys
+│   ├── Line 36: import types
+│   ├── Line 38: import _tkinter
+│   ├── Line 40: from tkinter.constants import *
+│   └── Line 41: import re
+├── Module variables / constants
+│   ├── TclError = _tkinter.TclError
+│   ├── wantobjects = 1
+│   ├── _debug = False
+│   ├── TkVersion = float(_tkinter.TK_VERSION)
+│   ├── TclVersion = float(_tkinter.TCL_VERSION)
+│   ├── READABLE = _tkinter.READABLE
+│   ├── WRITABLE = _tkinter.WRITABLE
+│   ├── EXCEPTION = _tkinter.EXCEPTION
+│   ├── _magic_re = re.compile('([\\\\{}])')
+│   ├── _space_re = re.compile('([\\s])', re.ASCII)
+│   ├── TCL_VERSION_INFO = _parse_version(_tkinter.TCL_PATCH_LEVEL)
+│   ├── TK_VERSION_INFO = _parse_version(_tkinter.TK_PATCH_LEVEL)
+│   ├── _support_default_root = True
+│   ├── _default_root = None
+│   ├── _varnum = 0
+│   ├── getint = int
+│   ├── getdouble = float
+│   ├── _checkbutton_count = 0
+│   └── __all__ = [name for name, obj in globals().items() if not name.startswith('_') and (not isinstance(obj, types.ModuleType)) and (name not in {'wantobjects'})]
+├── Top-level functions
+│   ├── def _join(value)
+│   │   ├── Line: 58
+│   │   └── Function/method calls: ' '.join, map
+│   ├── def _stringify(value)
+│   │   ├── Line: 63
+│   │   ├── Assigned variables: value
+│   │   └── Function/method calls: isinstance, len, _stringify, _magic_re.search, _join, str, _magic_re.sub, value.replace, _space_re.sub, _space_re.search
+│   ├── def _flatten(seq)
+│   │   ├── Line: 91
+│   │   ├── Assigned variables: res, item
+│   │   └── Function/method calls: isinstance, _flatten
+│   ├── def _cnfmerge(cnfs)
+│   │   ├── Line: 106
+│   │   ├── Assigned variables: cnf, c, k, v
+│   │   └── Function/method calls: isinstance, type, _flatten, cnf.update, print, c.items
+│   ├── def _splitdict(tk, v, cut_minus = True, conv = None)
+│   │   ├── Line: 128
+│   │   ├── Assigned variables: t, it, dict, key, value
+│   │   └── Function/method calls: tk.splitlist, len, RuntimeError, iter, zip, str, conv
+│   ├── def _parse_version(version)
+│   │   ├── Line: 159
+│   │   ├── Assigned variables: m, major, minor, releaselevel, serial, micro
+│   │   └── Function/method calls: re.fullmatch, m.groups, int, _VersionInfoType
+│   ├── def NoDefaultRoot()
+│   │   ├── Line: 312
+│   │   └── Assigned variables: _support_default_root, _default_root
+│   ├── def _get_default_root(what = None)
+│   │   ├── Line: 326
+│   │   ├── Assigned variables: root
+│   │   └── Function/method calls: RuntimeError, Tk
+│   ├── def _get_temp_root()
+│   │   ├── Line: 338
+│   │   ├── Assigned variables: root, _support_default_root
+│   │   └── Function/method calls: RuntimeError, Tk, root.withdraw
+│   ├── def _destroy_temp_root(master)
+│   │   ├── Line: 355
+│   │   └── Function/method calls: getattr, master.destroy
+│   ├── def _tkerror(err)
+│   │   └── Line: 363
+│   ├── def _exit(code = 0)
+│   │   ├── Line: 368
+│   │   ├── Assigned variables: code
+│   │   └── Function/method calls: int, SystemExit
+│   ├── def mainloop(n = 0)
+│   │   ├── Line: 678
+│   │   └── Function/method calls: _get_default_root('run the main loop').tk.mainloop, _get_default_root
+│   ├── def getboolean(s)
+│   │   ├── Line: 688
+│   │   └── Function/method calls: _get_default_root('use getboolean()').tk.getboolean, _get_default_root, ValueError
+│   ├── def _print_command(cmd, *, file = sys.stderr)
+│   │   ├── Line: 2782
+│   │   ├── Assigned variables: cmd
+│   │   └── Function/method calls: isinstance, _join, print
+│   ├── def Tcl(screenName = None, baseName = None, className = 'Tk', useTk = False)
+│   │   ├── Line: 2804
+│   │   └── Function/method calls: Tk
+│   ├── def image_names()
+│   │   ├── Line: 5021
+│   │   ├── Assigned variables: tk
+│   │   └── Function/method calls: _get_default_root, tk.splitlist, tk.call
+│   ├── def image_types()
+│   │   ├── Line: 5026
+│   │   ├── Assigned variables: tk
+│   │   └── Function/method calls: _get_default_root, tk.splitlist, tk.call
+│   └── def _test()
+│       ├── Line: 5444
+│       ├── Assigned variables: root, text, label, test, quit
+│       └── Function/method calls: Tk, root.globalgetvar, Label, label.pack, Button, root.test.configure, test.pack, quit.pack, root.iconify, root.update, root.deiconify, root.mainloop
+└── Classes
+    ├── class _VersionInfoType(collections.namedtuple('_VersionInfoType', ('major', 'minor', 'micro', 'releaselevel', 'serial')))
+    │   ├── Line: 151
+    │   └── Methods
+    │       └── def __str__(self)
+    │           └── Line: 153
+    ├── class EventType
+    │   ├── Line: 178
+    │   ├── Decorator: @enum._simple_enum(enum.StrEnum)
+    │   └── Class attributes / variables
+    │       ├── KeyPress = '2'
+    │       ├── Key = KeyPress
+    │       ├── KeyRelease = '3'
+    │       ├── ButtonPress = '4'
+    │       ├── Button = ButtonPress
+    │       ├── ButtonRelease = '5'
+    │       ├── Motion = '6'
+    │       ├── Enter = '7'
+    │       ├── Leave = '8'
+    │       ├── FocusIn = '9'
+    │       ├── FocusOut = '10'
+    │       ├── Keymap = '11'
+    │       ├── Expose = '12'
+    │       ├── GraphicsExpose = '13'
+    │       ├── NoExpose = '14'
+    │       ├── Visibility = '15'
+    │       ├── Create = '16'
+    │       ├── Destroy = '17'
+    │       ├── Unmap = '18'
+    │       ├── Map = '19'
+    │       ├── MapRequest = '20'
+    │       ├── Reparent = '21'
+    │       ├── Configure = '22'
+    │       ├── ConfigureRequest = '23'
+    │       ├── Gravity = '24'
+    │       ├── ResizeRequest = '25'
+    │       ├── Circulate = '26'
+    │       ├── CirculateRequest = '27'
+    │       ├── Property = '28'
+    │       ├── SelectionClear = '29'
+    │       ├── SelectionRequest = '30'
+    │       ├── Selection = '31'
+    │       ├── Colormap = '32'
+    │       ├── ClientMessage = '33'
+    │       ├── Mapping = '34'
+    │       ├── VirtualEvent = '35'
+    │       ├── Activate = '36'
+    │       ├── Deactivate = '37'
+    │       └── MouseWheel = '38'
+    ├── class Event
+    │   ├── Line: 220
+    │   ├── Class attributes / variables
+    │   │   └── __class_getitem__ = classmethod(types.GenericAlias)
+    │   ├── Methods
+    │   │   └── def __repr__(self)
+    │   │       ├── Line: 267
+    │   │       ├── Assigned variables: attrs, k, v, state, mods, s, i, n, keys
+    │   │       └── Function/method calls: self.__dict__.items, repr, getattr, isinstance, enumerate, s.append, len, hex, '|'.join, ''.join
+    │   └── Documentation
+    │       └── Docstring: Container for the properties of an event.
+
+    Instances of this type are generated if one of the following events occurs:
+
+    KeyPress, KeyRelease - for keyboard events
+    ButtonPress, ButtonRelease, Motion, Enter, Leave, MouseWheel - for mouse events
+    Visibility, Unmap, Map, Expose, FocusIn, FocusOut, Circulate,
+    Colormap, Gravity, Reparent, Property, Destroy, Activate,
+    Deactivate - for window events.
+
+    If a callback function for one of these events is registered
+    using bind, bind_all, bind_class, or tag_bind, the callback is
+    called with an Event as first argument. It will have the
+    following attributes (in braces are the event types for which
+    the attribute is valid):
+
+        serial - serial number of event
+    num - mouse button pressed (ButtonPress, ButtonRelease)
+    focus - whether the window has the focus (Enter, Leave)
+    height - height of the exposed window (Configure, Expose)
+    width - width of the exposed window (Configure, Expose)
+    keycode - keycode of the pressed key (KeyPress, KeyRelease)
+    state - state of the event as a number (ButtonPress, ButtonRelease,
+                            Enter, KeyPress, KeyRelease,
+                            Leave, Motion)
+    state - state as a string (Visibility)
+    time - when the event occurred
+    x - x-position of the mouse
+    y - y-position of the mouse
+    x_root - x-position of the mouse on the screen
+             (ButtonPress, ButtonRelease, KeyPress, KeyRelease, Motion)
+    y_root - y-position of the mouse on the screen
+             (ButtonPress, ButtonRelease, KeyPress, KeyRelease, Motion)
+    char - pressed character (KeyPress, KeyRelease)
+    send_event - see X/Windows documentation
+    keysym - keysym of the event as a string (KeyPress, KeyRelease)
+    keysym_num - keysym of the event as a number (KeyPress, KeyRelease)
+    type - type of the event as a number
+    widget - widget in which the event occurred
+    delta - delta of wheel movement (MouseWheel)
+    detail - certain fixed strings (see Tcl/Tk documentation)
+             (Enter, Leave, FocusIn, FocusOut, ConfigureRequest)
+    user_data - data string which was passed to event_generate() or empty
+                string (VirtualEvent)
+    ├── class Variable
+    │   ├── Line: 380
+    │   ├── Class attributes / variables
+    │   │   ├── _default = ''
+    │   │   ├── _tk = None
+    │   │   ├── _tclCommands = None
+    │   │   ├── initialize = set
+    │   │   └── trace = trace_variable
+    │   ├── Methods
+    │   │   ├── def __init__(self, master = None, value = None, name = None)
+    │   │   │   ├── Line: 389
+    │   │   │   ├── Assigned variables: master, _varnum
+    │   │   │   ├── Instance attributes: self._root, self._tk, self._name
+    │   │   │   └── Function/method calls: isinstance, TypeError, _get_default_root, master._root, repr, self.initialize, self._tk.getboolean, self._tk.call
+    │   │   ├── def __del__(self)
+    │   │   │   ├── Line: 419
+    │   │   │   ├── Assigned variables: name
+    │   │   │   ├── Instance attributes: self._tclCommands
+    │   │   │   └── Function/method calls: self._tk.getboolean, self._tk.call, self._tk.globalunsetvar, self._tk.deletecommand
+    │   │   ├── def __str__(self)
+    │   │   │   └── Line: 430
+    │   │   ├── def set(self, value)
+    │   │   │   ├── Line: 434
+    │   │   │   └── Function/method calls: self._tk.globalsetvar
+    │   │   ├── def get(self)
+    │   │   │   ├── Line: 440
+    │   │   │   └── Function/method calls: self._tk.globalgetvar
+    │   │   ├── def _register(self, callback)
+    │   │   │   ├── Line: 444
+    │   │   │   ├── Assigned variables: f, cbname, callback
+    │   │   │   ├── Instance attributes: self._tclCommands
+    │   │   │   └── Function/method calls: CallWrapper, repr, id, self._tk.createcommand, self._tclCommands.append
+    │   │   ├── def trace_add(self, mode, callback)
+    │   │   │   ├── Line: 461
+    │   │   │   ├── Assigned variables: cbname
+    │   │   │   └── Function/method calls: self._register, self._tk.call
+    │   │   ├── def trace_remove(self, mode, cbname)
+    │   │   │   ├── Line: 476
+    │   │   │   ├── Assigned variables: m, ca
+    │   │   │   └── Function/method calls: self._tk.call, self.trace_info, self._tk.splitlist, self._tk.deletecommand, self._tclCommands.remove
+    │   │   ├── def trace_info(self)
+    │   │   │   ├── Line: 495
+    │   │   │   ├── Assigned variables: splitlist, k, v
+    │   │   │   └── Function/method calls: splitlist, map, self._tk.call
+    │   │   ├── def trace_variable(self, mode, callback)
+    │   │   │   ├── Line: 501
+    │   │   │   ├── Assigned variables: cbname
+    │   │   │   └── Function/method calls: warnings.warn, self._register, self._tk.call
+    │   │   ├── def trace_vdelete(self, mode, cbname)
+    │   │   │   ├── Line: 526
+    │   │   │   ├── Assigned variables: cbname, m, ca
+    │   │   │   └── Function/method calls: warnings.warn, self._tk.call, self._tk.splitlist, self.trace_info, self._tk.deletecommand, self._tclCommands.remove
+    │   │   ├── def trace_vinfo(self)
+    │   │   │   ├── Line: 554
+    │   │   │   ├── Assigned variables: x
+    │   │   │   └── Function/method calls: warnings.warn, self._tk.splitlist, self._tk.call
+    │   │   └── def __eq__(self, other)
+    │   │       ├── Line: 570
+    │   │       └── Function/method calls: isinstance
+    │   └── Documentation
+    │       └── Docstring: Class to define value holders for e.g. buttons.
+
+    Subclasses StringVar, IntVar, DoubleVar, BooleanVar are specializations
+    that constrain the type of the value returned from get().
+    ├── class StringVar(Variable)
+    │   ├── Line: 578
+    │   ├── Class attributes / variables
+    │   │   └── _default = ''
+    │   ├── Methods
+    │   │   ├── def __init__(self, master = None, value = None, name = None)
+    │   │   │   ├── Line: 582
+    │   │   │   └── Function/method calls: Variable.__init__
+    │   │   └── def get(self)
+    │   │       ├── Line: 594
+    │   │       ├── Assigned variables: value
+    │   │       └── Function/method calls: self._tk.globalgetvar, isinstance, str
+    │   └── Documentation
+    │       └── Docstring: Value holder for strings variables.
+    ├── class IntVar(Variable)
+    │   ├── Line: 602
+    │   ├── Class attributes / variables
+    │   │   └── _default = 0
+    │   ├── Methods
+    │   │   ├── def __init__(self, master = None, value = None, name = None)
+    │   │   │   ├── Line: 606
+    │   │   │   └── Function/method calls: Variable.__init__
+    │   │   └── def get(self)
+    │   │       ├── Line: 618
+    │   │       ├── Assigned variables: value
+    │   │       └── Function/method calls: self._tk.globalgetvar, self._tk.getint, int, self._tk.getdouble
+    │   └── Documentation
+    │       └── Docstring: Value holder for integer variables.
+    ├── class DoubleVar(Variable)
+    │   ├── Line: 627
+    │   ├── Class attributes / variables
+    │   │   └── _default = 0.0
+    │   ├── Methods
+    │   │   ├── def __init__(self, master = None, value = None, name = None)
+    │   │   │   ├── Line: 631
+    │   │   │   └── Function/method calls: Variable.__init__
+    │   │   └── def get(self)
+    │   │       ├── Line: 643
+    │   │       └── Function/method calls: self._tk.getdouble, self._tk.globalgetvar
+    │   └── Documentation
+    │       └── Docstring: Value holder for float variables.
+    ├── class BooleanVar(Variable)
+    │   ├── Line: 648
+    │   ├── Class attributes / variables
+    │   │   ├── _default = False
+    │   │   └── initialize = set
+    │   ├── Methods
+    │   │   ├── def __init__(self, master = None, value = None, name = None)
+    │   │   │   ├── Line: 652
+    │   │   │   └── Function/method calls: Variable.__init__
+    │   │   ├── def set(self, value)
+    │   │   │   ├── Line: 664
+    │   │   │   └── Function/method calls: self._tk.globalsetvar, self._tk.getboolean
+    │   │   └── def get(self)
+    │   │       ├── Line: 670
+    │   │       └── Function/method calls: self._tk.getboolean, self._tk.globalgetvar, ValueError
+    │   └── Documentation
+    │       └── Docstring: Value holder for boolean variables.
+    ├── class Misc
+    │   ├── Line: 698
+    │   ├── Class attributes / variables
+    │   │   ├── _last_child_ids = None
+    │   │   ├── _tclCommands = None
+    │   │   ├── waitvar = wait_variable
+    │   │   ├── focus = focus_set
+    │   │   ├── busy_cget = tk_busy_cget
+    │   │   ├── busy_config = tk_busy_configure
+    │   │   ├── busy_configure = tk_busy_configure
+    │   │   ├── tk_busy_config = tk_busy_configure
+    │   │   ├── busy_current = tk_busy_current
+    │   │   ├── busy_forget = tk_busy_forget
+    │   │   ├── busy = tk_busy_hold
+    │   │   ├── busy_hold = tk_busy_hold
+    │   │   ├── tk_busy = tk_busy_hold
+    │   │   ├── busy_status = tk_busy_status
+    │   │   ├── lift = tkraise
+    │   │   ├── _nametowidget = nametowidget
+    │   │   ├── register = _register
+    │   │   ├── _subst_format = ('%#', '%b', '%d', '%f', '%h', '%k', '%s', '%t', '%w', '%x', '%y', '%A', '%E', '%K', '%N', '%W', '%T', '%X', '%Y', '%D')
+    │   │   ├── _subst_format_str = ' '.join(_subst_format)
+    │   │   ├── config = configure
+    │   │   ├── __getitem__ = cget
+    │   │   ├── __iter__ = None
+    │   │   ├── _noarg_ = ['_noarg_']
+    │   │   ├── propagate = pack_propagate
+    │   │   ├── content = pack_content
+    │   │   ├── slaves = pack_slaves
+    │   │   ├── anchor = grid_anchor
+    │   │   ├── bbox = grid_bbox
+    │   │   ├── columnconfigure = grid_columnconfigure
+    │   │   ├── rowconfigure = grid_rowconfigure
+    │   │   └── size = grid_size
+    │   ├── Methods
+    │   │   ├── def destroy(self)
+    │   │   │   ├── Line: 709
+    │   │   │   ├── Assigned variables: name
+    │   │   │   ├── Instance attributes: self._tclCommands
+    │   │   │   └── Function/method calls: self.tk.deletecommand
+    │   │   ├── def deletecommand(self, name)
+    │   │   │   ├── Line: 719
+    │   │   │   └── Function/method calls: self.tk.deletecommand, self._tclCommands.remove
+    │   │   ├── def tk_strictMotif(self, boolean = None)
+    │   │   │   ├── Line: 729
+    │   │   │   └── Function/method calls: self.tk.getboolean, self.tk.call
+    │   │   ├── def tk_bisque(self)
+    │   │   │   ├── Line: 739
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def tk_setPalette(self, *args, **kw)
+    │   │   │   ├── Line: 743
+    │   │   │   └── Function/method calls: self.tk.call, _flatten, list, kw.items
+    │   │   ├── def tk_appname(self, name = None)
+    │   │   │   ├── Line: 757
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def tk_useinputmethods(self, boolean = None, *, displayof = 0)
+    │   │   │   ├── Line: 768
+    │   │   │   ├── Assigned variables: args
+    │   │   │   └── Function/method calls: self._displayof, self.tk.getboolean, self.tk.call
+    │   │   ├── def tk_caret(self, *, x = None, y = None, height = None)
+    │   │   │   ├── Line: 779
+    │   │   │   ├── Assigned variables: args, option, value, values, i
+    │   │   │   └── Function/method calls: len, self.tk.call, self.tk.splitlist, self.tk.getint, range
+    │   │   ├── def tk_scaling(self, number = None, *, displayof = 0)
+    │   │   │   ├── Line: 798
+    │   │   │   ├── Assigned variables: args
+    │   │   │   └── Function/method calls: self._displayof, self.tk.call, self.tk.getdouble
+    │   │   ├── def tk_inactive(self, reset = False, *, displayof = 0)
+    │   │   │   ├── Line: 811
+    │   │   │   ├── Assigned variables: args
+    │   │   │   └── Function/method calls: self._displayof, self.tk.call, self.tk.getint
+    │   │   ├── def wait_variable(self, name)
+    │   │   │   ├── Line: 824
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wait_window(self, window = None)
+    │   │   │   ├── Line: 832
+    │   │   │   ├── Assigned variables: window
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wait_visibility(self, window = None)
+    │   │   │   ├── Line: 840
+    │   │   │   ├── Assigned variables: window
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def setvar(self, name, value)
+    │   │   │   ├── Line: 849
+    │   │   │   └── Function/method calls: self.tk.setvar
+    │   │   ├── def getvar(self, name)
+    │   │   │   ├── Line: 853
+    │   │   │   └── Function/method calls: self.tk.getvar
+    │   │   ├── def getint(self, s)
+    │   │   │   ├── Line: 857
+    │   │   │   └── Function/method calls: self.tk.getint, ValueError, str
+    │   │   ├── def getdouble(self, s)
+    │   │   │   ├── Line: 863
+    │   │   │   └── Function/method calls: self.tk.getdouble, ValueError, str
+    │   │   ├── def getboolean(self, s)
+    │   │   │   ├── Line: 869
+    │   │   │   └── Function/method calls: self.tk.getboolean, ValueError
+    │   │   ├── def focus_set(self)
+    │   │   │   ├── Line: 876
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def focus_force(self)
+    │   │   │   ├── Line: 885
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def focus_get(self)
+    │   │   │   ├── Line: 891
+    │   │   │   ├── Assigned variables: name
+    │   │   │   └── Function/method calls: self.tk.call, self._nametowidget
+    │   │   ├── def focus_displayof(self)
+    │   │   │   ├── Line: 905
+    │   │   │   ├── Assigned variables: name
+    │   │   │   └── Function/method calls: self.tk.call, self._nametowidget
+    │   │   ├── def focus_lastfor(self)
+    │   │   │   ├── Line: 917
+    │   │   │   ├── Assigned variables: name
+    │   │   │   └── Function/method calls: self.tk.call, self._nametowidget
+    │   │   ├── def tk_focusFollowsMouse(self)
+    │   │   │   ├── Line: 927
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def tk_focusNext(self)
+    │   │   │   ├── Line: 932
+    │   │   │   ├── Assigned variables: name
+    │   │   │   └── Function/method calls: self.tk.call, self._nametowidget
+    │   │   ├── def tk_focusPrev(self)
+    │   │   │   ├── Line: 945
+    │   │   │   ├── Assigned variables: name
+    │   │   │   └── Function/method calls: self.tk.call, self._nametowidget
+    │   │   ├── def after(self, ms, func = None, *args, **kw)
+    │   │   │   ├── Line: 951
+    │   │   │   ├── Assigned variables: name
+    │   │   │   ├── Function/method calls: self.tk.call, type, self._register
+    │   │   │   └── Nested definition: def callit() [line 963]
+    │   │   ├── def after_idle(self, func, *args, **kw)
+    │   │   │   ├── Line: 979
+    │   │   │   └── Function/method calls: self.after
+    │   │   ├── def after_cancel(self, id)
+    │   │   │   ├── Line: 987
+    │   │   │   ├── Assigned variables: data, script
+    │   │   │   └── Function/method calls: ValueError, self.tk.call, self.tk.splitlist, self.deletecommand
+    │   │   ├── def after_info(self, id = None)
+    │   │   │   ├── Line: 1004
+    │   │   │   └── Function/method calls: self.tk.splitlist, self.tk.call
+    │   │   ├── def bell(self, displayof = 0)
+    │   │   │   ├── Line: 1019
+    │   │   │   └── Function/method calls: self.tk.call, self._displayof
+    │   │   ├── def tk_busy_cget(self, option)
+    │   │   │   ├── Line: 1023
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def tk_busy_configure(self, cnf = None, **kw)
+    │   │   │   ├── Line: 1033
+    │   │   │   ├── Assigned variables: cnf
+    │   │   │   └── Function/method calls: _cnfmerge, self._getconfigure, isinstance, self._getconfigure1, self.tk.call, self._options
+    │   │   ├── def tk_busy_current(self, pattern = None)
+    │   │   │   ├── Line: 1061
+    │   │   │   ├── Assigned variables: x
+    │   │   │   └── Function/method calls: self._nametowidget, self.tk.splitlist, self.tk.call
+    │   │   ├── def tk_busy_forget(self)
+    │   │   │   ├── Line: 1072
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def tk_busy_hold(self, **kw)
+    │   │   │   ├── Line: 1080
+    │   │   │   └── Function/method calls: self.tk.call, self._options
+    │   │   ├── def tk_busy_status(self)
+    │   │   │   ├── Line: 1096
+    │   │   │   └── Function/method calls: self.tk.getboolean, self.tk.call
+    │   │   ├── def clipboard_get(self, **kw)
+    │   │   │   ├── Line: 1103
+    │   │   │   └── Function/method calls: self.tk.call, self._options
+    │   │   ├── def clipboard_clear(self, **kw)
+    │   │   │   ├── Line: 1126
+    │   │   │   └── Function/method calls: self.tk.call, self._options
+    │   │   ├── def clipboard_append(self, string, **kw)
+    │   │   │   ├── Line: 1134
+    │   │   │   └── Function/method calls: self.tk.call, self._options
+    │   │   ├── def grab_current(self)
+    │   │   │   ├── Line: 1145
+    │   │   │   ├── Assigned variables: name
+    │   │   │   └── Function/method calls: self.tk.call, self._nametowidget
+    │   │   ├── def grab_release(self)
+    │   │   │   ├── Line: 1152
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def grab_set(self)
+    │   │   │   ├── Line: 1156
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def grab_set_global(self)
+    │   │   │   ├── Line: 1163
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def grab_status(self)
+    │   │   │   ├── Line: 1171
+    │   │   │   ├── Assigned variables: status
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def option_add(self, pattern, value, priority = None)
+    │   │   │   ├── Line: 1178
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def option_clear(self)
+    │   │   │   ├── Line: 1186
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def option_get(self, name, className)
+    │   │   │   ├── Line: 1192
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def option_readfile(self, fileName, priority = None)
+    │   │   │   ├── Line: 1199
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def selection_clear(self, **kw)
+    │   │   │   ├── Line: 1206
+    │   │   │   └── Function/method calls: self.tk.call, self._options
+    │   │   ├── def selection_get(self, **kw)
+    │   │   │   ├── Line: 1211
+    │   │   │   └── Function/method calls: self.tk.call, self._options
+    │   │   ├── def selection_handle(self, command, **kw)
+    │   │   │   ├── Line: 1229
+    │   │   │   ├── Assigned variables: name
+    │   │   │   └── Function/method calls: self._register, self.tk.call, self._options
+    │   │   ├── def selection_own(self, **kw)
+    │   │   │   ├── Line: 1245
+    │   │   │   └── Function/method calls: self.tk.call, self._options
+    │   │   ├── def selection_own_get(self, **kw)
+    │   │   │   ├── Line: 1253
+    │   │   │   ├── Assigned variables: name
+    │   │   │   └── Function/method calls: self.tk.call, self._options, self._nametowidget
+    │   │   ├── def send(self, interp, cmd, *args)
+    │   │   │   ├── Line: 1265
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def lower(self, belowThis = None)
+    │   │   │   ├── Line: 1269
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def tkraise(self, aboveThis = None)
+    │   │   │   ├── Line: 1273
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def info_patchlevel(self)
+    │   │   │   ├── Line: 1279
+    │   │   │   ├── Assigned variables: patchlevel
+    │   │   │   └── Function/method calls: self.tk.call, _parse_version
+    │   │   ├── def winfo_atom(self, name, displayof = 0)
+    │   │   │   ├── Line: 1284
+    │   │   │   ├── Assigned variables: args
+    │   │   │   └── Function/method calls: self._displayof, self.tk.getint, self.tk.call
+    │   │   ├── def winfo_atomname(self, id, displayof = 0)
+    │   │   │   ├── Line: 1289
+    │   │   │   ├── Assigned variables: args
+    │   │   │   └── Function/method calls: self._displayof, self.tk.call
+    │   │   ├── def winfo_cells(self)
+    │   │   │   ├── Line: 1295
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_children(self)
+    │   │   │   ├── Line: 1300
+    │   │   │   ├── Assigned variables: result, child
+    │   │   │   └── Function/method calls: self.tk.splitlist, self.tk.call, result.append, self._nametowidget
+    │   │   ├── def winfo_class(self)
+    │   │   │   ├── Line: 1313
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def winfo_colormapfull(self)
+    │   │   │   ├── Line: 1317
+    │   │   │   └── Function/method calls: self.tk.getboolean, self.tk.call
+    │   │   ├── def winfo_containing(self, rootX, rootY, displayof = 0)
+    │   │   │   ├── Line: 1322
+    │   │   │   ├── Assigned variables: args, name
+    │   │   │   └── Function/method calls: self._displayof, self.tk.call, self._nametowidget
+    │   │   ├── def winfo_depth(self)
+    │   │   │   ├── Line: 1333
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_exists(self)
+    │   │   │   ├── Line: 1337
+    │   │   │   └── Function/method calls: self.tk.getboolean, self.tk.call
+    │   │   ├── def winfo_fpixels(self, number)
+    │   │   │   ├── Line: 1342
+    │   │   │   └── Function/method calls: self.tk.getdouble, self.tk.call
+    │   │   ├── def winfo_geometry(self)
+    │   │   │   ├── Line: 1348
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def winfo_height(self)
+    │   │   │   ├── Line: 1352
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_id(self)
+    │   │   │   ├── Line: 1357
+    │   │   │   └── Function/method calls: int, self.tk.call
+    │   │   ├── def winfo_interps(self, displayof = 0)
+    │   │   │   ├── Line: 1361
+    │   │   │   ├── Assigned variables: args
+    │   │   │   └── Function/method calls: self._displayof, self.tk.splitlist, self.tk.call
+    │   │   ├── def winfo_isdark(self)
+    │   │   │   ├── Line: 1366
+    │   │   │   └── Function/method calls: self.tk.getboolean, self.tk.call
+    │   │   ├── def winfo_ismapped(self)
+    │   │   │   ├── Line: 1375
+    │   │   │   └── Function/method calls: self.tk.getboolean, self.tk.call
+    │   │   ├── def winfo_manager(self)
+    │   │   │   ├── Line: 1380
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def winfo_name(self)
+    │   │   │   ├── Line: 1384
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def winfo_parent(self)
+    │   │   │   ├── Line: 1388
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def winfo_pathname(self, id, displayof = 0)
+    │   │   │   ├── Line: 1392
+    │   │   │   ├── Assigned variables: id, args
+    │   │   │   └── Function/method calls: isinstance, hex, self._displayof, self.tk.call
+    │   │   ├── def winfo_pixels(self, number)
+    │   │   │   ├── Line: 1400
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_pointerx(self)
+    │   │   │   ├── Line: 1405
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_pointerxy(self)
+    │   │   │   ├── Line: 1410
+    │   │   │   └── Function/method calls: self._getints, self.tk.call
+    │   │   ├── def winfo_pointery(self)
+    │   │   │   ├── Line: 1415
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_reqheight(self)
+    │   │   │   ├── Line: 1420
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_reqwidth(self)
+    │   │   │   ├── Line: 1425
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_rgb(self, color)
+    │   │   │   ├── Line: 1430
+    │   │   │   └── Function/method calls: self._getints, self.tk.call
+    │   │   ├── def winfo_rootx(self)
+    │   │   │   ├── Line: 1435
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_rooty(self)
+    │   │   │   ├── Line: 1441
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_screen(self)
+    │   │   │   ├── Line: 1447
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def winfo_screencells(self)
+    │   │   │   ├── Line: 1451
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_screendepth(self)
+    │   │   │   ├── Line: 1457
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_screenheight(self)
+    │   │   │   ├── Line: 1463
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_screenmmheight(self)
+    │   │   │   ├── Line: 1469
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_screenmmwidth(self)
+    │   │   │   ├── Line: 1475
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_screenvisual(self)
+    │   │   │   ├── Line: 1481
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def winfo_screenwidth(self)
+    │   │   │   ├── Line: 1487
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_server(self)
+    │   │   │   ├── Line: 1493
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def winfo_toplevel(self)
+    │   │   │   ├── Line: 1498
+    │   │   │   └── Function/method calls: self._nametowidget, self.tk.call
+    │   │   ├── def winfo_viewable(self)
+    │   │   │   ├── Line: 1503
+    │   │   │   └── Function/method calls: self.tk.getboolean, self.tk.call
+    │   │   ├── def winfo_visual(self)
+    │   │   │   ├── Line: 1508
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def winfo_visualid(self)
+    │   │   │   ├── Line: 1514
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def winfo_visualsavailable(self, includeids = False)
+    │   │   │   ├── Line: 1518
+    │   │   │   ├── Assigned variables: data, x
+    │   │   │   └── Function/method calls: self.tk.call, self.tk.splitlist, self.__winfo_parseitem
+    │   │   ├── def __winfo_parseitem(self, t)
+    │   │   │   ├── Line: 1529
+    │   │   │   └── Function/method calls: tuple, map
+    │   │   ├── def __winfo_getint(self, x)
+    │   │   │   ├── Line: 1533
+    │   │   │   └── Function/method calls: int
+    │   │   ├── def winfo_vrootheight(self)
+    │   │   │   ├── Line: 1537
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_vrootwidth(self)
+    │   │   │   ├── Line: 1544
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_vrootx(self)
+    │   │   │   ├── Line: 1551
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_vrooty(self)
+    │   │   │   ├── Line: 1557
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_width(self)
+    │   │   │   ├── Line: 1563
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_x(self)
+    │   │   │   ├── Line: 1568
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def winfo_y(self)
+    │   │   │   ├── Line: 1574
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def update(self)
+    │   │   │   ├── Line: 1580
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def update_idletasks(self)
+    │   │   │   ├── Line: 1584
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def bindtags(self, tagList = None)
+    │   │   │   ├── Line: 1590
+    │   │   │   └── Function/method calls: self.tk.splitlist, self.tk.call
+    │   │   ├── def _delete_bind_commands(self, *what)
+    │   │   │   ├── Line: 1603
+    │   │   │   ├── Assigned variables: lines, p, line, m, funcid
+    │   │   │   └── Function/method calls: self.tk.call(what).split, self.tk.call, re.compile, p.fullmatch, self.deletecommand
+    │   │   ├── def _bind(self, what, sequence, func, add)
+    │   │   │   ├── Line: 1615
+    │   │   │   ├── Assigned variables: funcid, cmd
+    │   │   │   └── Function/method calls: isinstance, self.tk.call, self._delete_bind_commands, self._register, self.tk.splitlist
+    │   │   ├── def bind(self, sequence = None, func = None, add = None)
+    │   │   │   ├── Line: 1634
+    │   │   │   └── Function/method calls: self._bind
+    │   │   ├── def unbind(self, sequence, funcid = None)
+    │   │   │   ├── Line: 1675
+    │   │   │   └── Function/method calls: self._unbind
+    │   │   ├── def _unbind(self, what, funcid = None)
+    │   │   │   ├── Line: 1686
+    │   │   │   ├── Assigned variables: lines, prefix, keep, line
+    │   │   │   └── Function/method calls: self._delete_bind_commands, self.tk.call, self.tk.call(what).split, '\n'.join, line.startswith, keep.strip, self.deletecommand
+    │   │   ├── def bind_all(self, sequence = None, func = None, add = None)
+    │   │   │   ├── Line: 1700
+    │   │   │   └── Function/method calls: self._root()._bind, self._root
+    │   │   ├── def unbind_all(self, sequence)
+    │   │   │   ├── Line: 1707
+    │   │   │   └── Function/method calls: self._root()._unbind, self._root
+    │   │   ├── def bind_class(self, className, sequence = None, func = None, add = None)
+    │   │   │   ├── Line: 1711
+    │   │   │   └── Function/method calls: self._root()._bind, self._root
+    │   │   ├── def unbind_class(self, className, sequence)
+    │   │   │   ├── Line: 1721
+    │   │   │   └── Function/method calls: self._root()._unbind, self._root
+    │   │   ├── def mainloop(self, n = 0)
+    │   │   │   ├── Line: 1726
+    │   │   │   └── Function/method calls: self.tk.mainloop
+    │   │   ├── def quit(self)
+    │   │   │   ├── Line: 1730
+    │   │   │   └── Function/method calls: self.tk.quit
+    │   │   ├── def _getints(self, string)
+    │   │   │   ├── Line: 1734
+    │   │   │   └── Function/method calls: tuple, map, self.tk.splitlist
+    │   │   ├── def _getdoubles(self, string)
+    │   │   │   ├── Line: 1739
+    │   │   │   └── Function/method calls: tuple, map, self.tk.splitlist
+    │   │   ├── def _getboolean(self, string)
+    │   │   │   ├── Line: 1744
+    │   │   │   └── Function/method calls: self.tk.getboolean
+    │   │   ├── def _displayof(self, displayof)
+    │   │   │   └── Line: 1749
+    │   │   ├── def _windowingsystem(self)
+    │   │   │   ├── Line: 1758
+    │   │   │   ├── Decorator: @property
+    │   │   │   ├── Assigned variables: ws
+    │   │   │   └── Function/method calls: self._root, self.tk.call
+    │   │   ├── def _options(self, cnf, kw = None)
+    │   │   │   ├── Line: 1767
+    │   │   │   ├── Assigned variables: cnf, res, k, v, nv, item
+    │   │   │   └── Function/method calls: _cnfmerge, cnf.items, callable, self._register, isinstance, nv.append, str, _stringify, ' '.join
+    │   │   ├── def nametowidget(self, name)
+    │   │   │   ├── Line: 1793
+    │   │   │   ├── Assigned variables: name, w, n
+    │   │   │   └── Function/method calls: str(name).split, str, w._root, n.startswith, n.rsplit
+    │   │   ├── def _register(self, func, subst = None, needcleanup = 1)
+    │   │   │   ├── Line: 1821
+    │   │   │   ├── Assigned variables: f, name, func
+    │   │   │   ├── Instance attributes: self._tclCommands
+    │   │   │   └── Function/method calls: CallWrapper, repr, id, self.tk.createcommand, self._tclCommands.append
+    │   │   ├── def _root(self)
+    │   │   │   ├── Line: 1845
+    │   │   │   └── Assigned variables: w
+    │   │   ├── def _substitute(self, *args)
+    │   │   │   ├── Line: 1855
+    │   │   │   ├── Assigned variables: getboolean, getint, s, args, nsign, b, d, f, h, k, t, w, x, y, A, E, K, N, W, T, X, Y, D, e
+    │   │   │   ├── Function/method calls: len, any, isinstance, Event, getint, getint_event, getboolean, EventType, str, self._nametowidget
+    │   │   │   └── Nested definition: def getint_event() [line 1861]
+    │   │   ├── def _report_exception(self)
+    │   │   │   ├── Line: 1931
+    │   │   │   ├── Assigned variables: exc, val, tb, root
+    │   │   │   └── Function/method calls: sys.exc_info, self._root, root.report_callback_exception
+    │   │   ├── def _getconfigure(self, *args)
+    │   │   │   ├── Line: 1937
+    │   │   │   ├── Assigned variables: cnf, x
+    │   │   │   └── Function/method calls: self.tk.splitlist, self.tk.call
+    │   │   ├── def _getconfigure1(self, *args)
+    │   │   │   ├── Line: 1945
+    │   │   │   ├── Assigned variables: x
+    │   │   │   └── Function/method calls: self.tk.splitlist, self.tk.call
+    │   │   ├── def _configure(self, cmd, cnf, kw)
+    │   │   │   ├── Line: 1949
+    │   │   │   ├── Assigned variables: cnf
+    │   │   │   └── Function/method calls: _cnfmerge, self._getconfigure, _flatten, isinstance, self._getconfigure1, self.tk.call, self._options
+    │   │   ├── def configure(self, cnf = None, **kw)
+    │   │   │   ├── Line: 1962
+    │   │   │   └── Function/method calls: self._configure
+    │   │   ├── def cget(self, key)
+    │   │   │   ├── Line: 1979
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def __setitem__(self, key, value)
+    │   │   │   ├── Line: 1986
+    │   │   │   └── Function/method calls: self.configure
+    │   │   ├── def keys(self)
+    │   │   │   ├── Line: 1989
+    │   │   │   ├── Assigned variables: splitlist, x
+    │   │   │   └── Function/method calls: splitlist, self.tk.call
+    │   │   ├── def __str__(self)
+    │   │   │   └── Line: 1995
+    │   │   ├── def __repr__(self)
+    │   │   │   └── Line: 1999
+    │   │   ├── def pack_propagate(self, flag = _noarg_)
+    │   │   │   ├── Line: 2006
+    │   │   │   └── Function/method calls: self._getboolean, self.tk.call
+    │   │   ├── def pack_content(self)
+    │   │   │   ├── Line: 2021
+    │   │   │   ├── Assigned variables: res, x
+    │   │   │   └── Function/method calls: self.tk.call, self.info_patchlevel, self._nametowidget, self.tk.splitlist
+    │   │   ├── def pack_slaves(self)
+    │   │   │   ├── Line: 2034
+    │   │   │   ├── Assigned variables: x
+    │   │   │   └── Function/method calls: self._nametowidget, self.tk.splitlist, self.tk.call
+    │   │   ├── def place_content(self)
+    │   │   │   ├── Line: 2043
+    │   │   │   ├── Assigned variables: res, x
+    │   │   │   └── Function/method calls: self.tk.call, self.info_patchlevel, self._nametowidget, self.tk.splitlist
+    │   │   ├── def place_slaves(self)
+    │   │   │   ├── Line: 2054
+    │   │   │   ├── Assigned variables: x
+    │   │   │   └── Function/method calls: self._nametowidget, self.tk.splitlist, self.tk.call
+    │   │   ├── def grid_anchor(self, anchor = None)
+    │   │   │   ├── Line: 2063
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def grid_bbox(self, column = None, row = None, col2 = None, row2 = None)
+    │   │   │   ├── Line: 2072
+    │   │   │   ├── Assigned variables: args
+    │   │   │   └── Function/method calls: self._getints, self.tk.call
+    │   │   ├── def _gridconvvalue(self, value)
+    │   │   │   ├── Line: 2093
+    │   │   │   ├── Assigned variables: svalue
+    │   │   │   └── Function/method calls: isinstance, str, self.tk.getdouble, self.tk.getint
+    │   │   ├── def _grid_configure(self, command, index, cnf, kw)
+    │   │   │   ├── Line: 2107
+    │   │   │   ├── Assigned variables: cnf, options, res
+    │   │   │   └── Function/method calls: isinstance, self._options, _splitdict, self.tk.call, len, self._gridconvvalue
+    │   │   ├── def grid_columnconfigure(self, index, cnf = {}, **kw)
+    │   │   │   ├── Line: 2128
+    │   │   │   └── Function/method calls: self._grid_configure
+    │   │   ├── def grid_location(self, x, y)
+    │   │   │   ├── Line: 2138
+    │   │   │   └── Function/method calls: self._getints, self.tk.call
+    │   │   ├── def grid_propagate(self, flag = _noarg_)
+    │   │   │   ├── Line: 2146
+    │   │   │   └── Function/method calls: self._getboolean, self.tk.call
+    │   │   ├── def grid_rowconfigure(self, index, cnf = {}, **kw)
+    │   │   │   ├── Line: 2159
+    │   │   │   └── Function/method calls: self._grid_configure
+    │   │   ├── def grid_size(self)
+    │   │   │   ├── Line: 2169
+    │   │   │   └── Function/method calls: self._getints, self.tk.call
+    │   │   ├── def grid_content(self, row = None, column = None)
+    │   │   │   ├── Line: 2176
+    │   │   │   ├── Assigned variables: args, res, x
+    │   │   │   └── Function/method calls: self.tk.call, self.info_patchlevel, self._nametowidget, self.tk.splitlist
+    │   │   ├── def grid_slaves(self, row = None, column = None)
+    │   │   │   ├── Line: 2197
+    │   │   │   ├── Assigned variables: args, x
+    │   │   │   └── Function/method calls: self._nametowidget, self.tk.splitlist, self.tk.call
+    │   │   ├── def event_add(self, virtual, *sequences)
+    │   │   │   ├── Line: 2211
+    │   │   │   ├── Assigned variables: args
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def event_delete(self, virtual, *sequences)
+    │   │   │   ├── Line: 2218
+    │   │   │   ├── Assigned variables: args
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def event_generate(self, sequence, **kw)
+    │   │   │   ├── Line: 2223
+    │   │   │   ├── Assigned variables: args, k, v
+    │   │   │   └── Function/method calls: kw.items, str, self.tk.call
+    │   │   ├── def event_info(self, virtual = None)
+    │   │   │   ├── Line: 2232
+    │   │   │   └── Function/method calls: self.tk.splitlist, self.tk.call
+    │   │   ├── def image_names(self)
+    │   │   │   ├── Line: 2240
+    │   │   │   └── Function/method calls: self.tk.splitlist, self.tk.call
+    │   │   └── def image_types(self)
+    │   │       ├── Line: 2244
+    │   │       └── Function/method calls: self.tk.splitlist, self.tk.call
+    │   └── Documentation
+    │       └── Docstring: Internal class.
+
+    Base class which defines methods common for interior widgets.
+    ├── class CallWrapper
+    │   ├── Line: 2249
+    │   ├── Methods
+    │   │   ├── def __init__(self, func, subst, widget)
+    │   │   │   ├── Line: 2253
+    │   │   │   └── Instance attributes: self.func, self.subst, self.widget
+    │   │   └── def __call__(self, *args)
+    │   │       ├── Line: 2259
+    │   │       ├── Assigned variables: args
+    │   │       └── Function/method calls: self.subst, self.func, self.widget._report_exception
+    │   └── Documentation
+    │       └── Docstring: Internal class. Stores function to call when some user
+    defined Tcl function is called e.g. after an event occurred.
+    ├── class XView
+    │   ├── Line: 2271
+    │   ├── Methods
+    │   │   ├── def xview(self, *args)
+    │   │   │   ├── Line: 2275
+    │   │   │   ├── Assigned variables: res
+    │   │   │   └── Function/method calls: self.tk.call, self._getdoubles
+    │   │   ├── def xview_moveto(self, fraction)
+    │   │   │   ├── Line: 2281
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   └── def xview_scroll(self, number, what)
+    │   │       ├── Line: 2286
+    │   │       └── Function/method calls: self.tk.call
+    │   └── Documentation
+    │       └── Docstring: Mix-in class for querying and changing the horizontal position
+    of a widget's window.
+    ├── class YView
+    │   ├── Line: 2292
+    │   ├── Methods
+    │   │   ├── def yview(self, *args)
+    │   │   │   ├── Line: 2296
+    │   │   │   ├── Assigned variables: res
+    │   │   │   └── Function/method calls: self.tk.call, self._getdoubles
+    │   │   ├── def yview_moveto(self, fraction)
+    │   │   │   ├── Line: 2302
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   └── def yview_scroll(self, number, what)
+    │   │       ├── Line: 2307
+    │   │       └── Function/method calls: self.tk.call
+    │   └── Documentation
+    │       └── Docstring: Mix-in class for querying and changing the vertical position
+    of a widget's window.
+    ├── class Wm
+    │   ├── Line: 2313
+    │   ├── Class attributes / variables
+    │   │   ├── aspect = wm_aspect
+    │   │   ├── attributes = wm_attributes
+    │   │   ├── client = wm_client
+    │   │   ├── colormapwindows = wm_colormapwindows
+    │   │   ├── command = wm_command
+    │   │   ├── deiconify = wm_deiconify
+    │   │   ├── focusmodel = wm_focusmodel
+    │   │   ├── forget = wm_forget
+    │   │   ├── frame = wm_frame
+    │   │   ├── geometry = wm_geometry
+    │   │   ├── grid = wm_grid
+    │   │   ├── group = wm_group
+    │   │   ├── iconbadge = wm_iconbadge
+    │   │   ├── iconbitmap = wm_iconbitmap
+    │   │   ├── iconify = wm_iconify
+    │   │   ├── iconmask = wm_iconmask
+    │   │   ├── iconname = wm_iconname
+    │   │   ├── iconphoto = wm_iconphoto
+    │   │   ├── iconposition = wm_iconposition
+    │   │   ├── iconwindow = wm_iconwindow
+    │   │   ├── manage = wm_manage
+    │   │   ├── maxsize = wm_maxsize
+    │   │   ├── minsize = wm_minsize
+    │   │   ├── overrideredirect = wm_overrideredirect
+    │   │   ├── positionfrom = wm_positionfrom
+    │   │   ├── protocol = wm_protocol
+    │   │   ├── resizable = wm_resizable
+    │   │   ├── sizefrom = wm_sizefrom
+    │   │   ├── stackorder = wm_stackorder
+    │   │   ├── state = wm_state
+    │   │   ├── title = wm_title
+    │   │   ├── transient = wm_transient
+    │   │   └── withdraw = wm_withdraw
+    │   ├── Methods
+    │   │   ├── def wm_aspect(self, minNumer = None, minDenom = None, maxNumer = None, maxDenom = None)
+    │   │   │   ├── Line: 2316
+    │   │   │   └── Function/method calls: self._getints, self.tk.call
+    │   │   ├── def wm_attributes(self, *args, return_python_dict = False, **kwargs)
+    │   │   │   ├── Line: 2329
+    │   │   │   ├── Assigned variables: res, option
+    │   │   │   └── Function/method calls: self.tk.call, _splitdict, self.tk.splitlist, len, TypeError, self._options
+    │   │   ├── def wm_client(self, name = None)
+    │   │   │   ├── Line: 2365
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wm_colormapwindows(self, *wlist)
+    │   │   │   ├── Line: 2372
+    │   │   │   ├── Assigned variables: wlist, args, x
+    │   │   │   └── Function/method calls: len, self.tk.call, self._nametowidget, self.tk.splitlist
+    │   │   ├── def wm_command(self, value = None)
+    │   │   │   ├── Line: 2387
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wm_deiconify(self)
+    │   │   │   ├── Line: 2395
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wm_focusmodel(self, model = None)
+    │   │   │   ├── Line: 2402
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wm_forget(self, window)
+    │   │   │   ├── Line: 2410
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wm_frame(self)
+    │   │   │   ├── Line: 2420
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wm_geometry(self, newGeometry = None)
+    │   │   │   ├── Line: 2426
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wm_grid(self, baseWidth = None, baseHeight = None, widthInc = None, heightInc = None)
+    │   │   │   ├── Line: 2433
+    │   │   │   └── Function/method calls: self._getints, self.tk.call
+    │   │   ├── def wm_group(self, pathName = None)
+    │   │   │   ├── Line: 2446
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wm_iconbadge(self, badge)
+    │   │   │   ├── Line: 2453
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wm_iconbitmap(self, bitmap = None, default = None)
+    │   │   │   ├── Line: 2469
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wm_iconify(self)
+    │   │   │   ├── Line: 2485
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wm_iconmask(self, bitmap = None)
+    │   │   │   ├── Line: 2491
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wm_iconname(self, newName = None)
+    │   │   │   ├── Line: 2498
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wm_iconphoto(self, default = False, *args)
+    │   │   │   ├── Line: 2505
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wm_iconposition(self, x = None, y = None)
+    │   │   │   ├── Line: 2532
+    │   │   │   └── Function/method calls: self._getints, self.tk.call
+    │   │   ├── def wm_iconwindow(self, pathName = None)
+    │   │   │   ├── Line: 2540
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wm_manage(self, widget)
+    │   │   │   ├── Line: 2547
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wm_maxsize(self, width = None, height = None)
+    │   │   │   ├── Line: 2555
+    │   │   │   └── Function/method calls: self._getints, self.tk.call
+    │   │   ├── def wm_minsize(self, width = None, height = None)
+    │   │   │   ├── Line: 2564
+    │   │   │   └── Function/method calls: self._getints, self.tk.call
+    │   │   ├── def wm_overrideredirect(self, boolean = None)
+    │   │   │   ├── Line: 2573
+    │   │   │   └── Function/method calls: self._getboolean, self.tk.call
+    │   │   ├── def wm_positionfrom(self, who = None)
+    │   │   │   ├── Line: 2582
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wm_protocol(self, name = None, func = None)
+    │   │   │   ├── Line: 2590
+    │   │   │   ├── Assigned variables: command
+    │   │   │   └── Function/method calls: callable, self._register, self.tk.call
+    │   │   ├── def wm_resizable(self, width = None, height = None)
+    │   │   │   ├── Line: 2603
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wm_sizefrom(self, who = None)
+    │   │   │   ├── Line: 2610
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wm_stackorder(self, relation = None, window = None)
+    │   │   │   ├── Line: 2618
+    │   │   │   ├── Assigned variables: x
+    │   │   │   └── Function/method calls: self._nametowidget, self.tk.splitlist, self.tk.call, self.tk.getboolean
+    │   │   ├── def wm_state(self, newstate = None)
+    │   │   │   ├── Line: 2637
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wm_title(self, string = None)
+    │   │   │   ├── Line: 2644
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def wm_transient(self, master = None)
+    │   │   │   ├── Line: 2650
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   └── def wm_withdraw(self)
+    │   │       ├── Line: 2657
+    │   │       └── Function/method calls: self.tk.call
+    │   └── Documentation
+    │       └── Docstring: Provides functions for the communication with the window manager.
+    ├── class Tk(Misc, Wm)
+    │   ├── Line: 2665
+    │   ├── Class attributes / variables
+    │   │   └── _w = '.'
+    │   ├── Methods
+    │   │   ├── def __init__(self, screenName = None, baseName = None, className = 'Tk', useTk = True, sync = False, use = None)
+    │   │   │   ├── Line: 2670
+    │   │   │   ├── Assigned variables: baseName, ext, interactive
+    │   │   │   ├── Instance attributes: self.master, self.children, self._tkloaded, self.tk
+    │   │   │   └── Function/method calls: os.path.basename, os.path.splitext, _tkinter.create, self.tk.settrace, self._loadtk, self.readprofile
+    │   │   ├── def loadtk(self)
+    │   │   │   ├── Line: 2699
+    │   │   │   └── Function/method calls: self.tk.loadtk, self._loadtk
+    │   │   ├── def _loadtk(self)
+    │   │   │   ├── Line: 2704
+    │   │   │   ├── Assigned variables: tk_version, tcl_version, _default_root
+    │   │   │   ├── Instance attributes: self._tkloaded, self._tclCommands
+    │   │   │   └── Function/method calls: self.tk.getvar, RuntimeError, str, self.tk.createcommand, self._tclCommands.append, self.protocol
+    │   │   ├── def destroy(self)
+    │   │   │   ├── Line: 2730
+    │   │   │   ├── Assigned variables: c, _default_root
+    │   │   │   └── Function/method calls: list, self.children.values, c.destroy, self.tk.call, Misc.destroy
+    │   │   ├── def readprofile(self, baseName, className)
+    │   │   │   ├── Line: 2740
+    │   │   │   ├── Assigned variables: home, class_tcl, class_py, base_tcl, base_py, dir, f
+    │   │   │   └── Function/method calls: os.path.join, exec, os.path.isfile, self.tk.call, open, f.read
+    │   │   ├── def report_callback_exception(self, exc, val, tb)
+    │   │   │   ├── Line: 2764
+    │   │   │   └── Function/method calls: print, traceback.print_exception
+    │   │   └── def __getattr__(self, attr)
+    │   │       ├── Line: 2777
+    │   │       └── Function/method calls: getattr
+    │   └── Documentation
+    │       └── Docstring: Toplevel widget of Tk which represents mostly the main window
+    of an application. It has an associated Tcl interpreter.
+    ├── class Pack
+    │   ├── Line: 2808
+    │   ├── Class attributes / variables
+    │   │   ├── pack = pack_configure
+    │   │   ├── configure = pack_configure
+    │   │   ├── config = pack_configure
+    │   │   ├── forget = pack_forget
+    │   │   ├── info = pack_info
+    │   │   ├── propagate = Misc.pack_propagate
+    │   │   ├── pack_propagate = Misc.pack_propagate
+    │   │   ├── content = Misc.pack_content
+    │   │   ├── pack_content = Misc.pack_content
+    │   │   ├── slaves = Misc.pack_slaves
+    │   │   └── pack_slaves = Misc.pack_slaves
+    │   ├── Methods
+    │   │   ├── def pack_configure(self, cnf = {}, **kw)
+    │   │   │   ├── Line: 2813
+    │   │   │   └── Function/method calls: self.tk.call, self._options
+    │   │   ├── def pack_forget(self)
+    │   │   │   ├── Line: 2835
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   └── def pack_info(self)
+    │   │       ├── Line: 2841
+    │   │       ├── Assigned variables: d
+    │   │       └── Function/method calls: _splitdict, self.tk.call, self.nametowidget
+    │   └── Documentation
+    │       └── Docstring: Geometry manager Pack.
+
+    Base class to use the methods pack_* in every widget.
+    ├── class Place
+    │   ├── Line: 2855
+    │   ├── Class attributes / variables
+    │   │   ├── place = place_configure
+    │   │   ├── configure = place_configure
+    │   │   ├── config = place_configure
+    │   │   ├── forget = place_forget
+    │   │   ├── info = place_info
+    │   │   ├── content = Misc.place_content
+    │   │   ├── place_content = Misc.place_content
+    │   │   ├── slaves = Misc.place_slaves
+    │   │   └── place_slaves = Misc.place_slaves
+    │   ├── Methods
+    │   │   ├── def place_configure(self, cnf = {}, **kw)
+    │   │   │   ├── Line: 2860
+    │   │   │   └── Function/method calls: self.tk.call, self._options
+    │   │   ├── def place_forget(self)
+    │   │   │   ├── Line: 2894
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   └── def place_info(self)
+    │   │       ├── Line: 2900
+    │   │       ├── Assigned variables: d
+    │   │       └── Function/method calls: _splitdict, self.tk.call, self.nametowidget
+    │   └── Documentation
+    │       └── Docstring: Geometry manager Place.
+
+    Base class to use the methods place_* in every widget.
+    ├── class Grid
+    │   ├── Line: 2913
+    │   ├── Class attributes / variables
+    │   │   ├── grid = grid_configure
+    │   │   ├── configure = grid_configure
+    │   │   ├── config = grid_configure
+    │   │   ├── bbox = Misc.grid_bbox
+    │   │   ├── grid_bbox = Misc.grid_bbox
+    │   │   ├── columnconfigure = Misc.grid_columnconfigure
+    │   │   ├── grid_columnconfigure = Misc.grid_columnconfigure
+    │   │   ├── forget = grid_forget
+    │   │   ├── info = grid_info
+    │   │   ├── location = Misc.grid_location
+    │   │   ├── grid_location = Misc.grid_location
+    │   │   ├── propagate = Misc.grid_propagate
+    │   │   ├── grid_propagate = Misc.grid_propagate
+    │   │   ├── rowconfigure = Misc.grid_rowconfigure
+    │   │   ├── grid_rowconfigure = Misc.grid_rowconfigure
+    │   │   ├── size = Misc.grid_size
+    │   │   ├── grid_size = Misc.grid_size
+    │   │   ├── content = Misc.grid_content
+    │   │   ├── grid_content = Misc.grid_content
+    │   │   ├── slaves = Misc.grid_slaves
+    │   │   └── grid_slaves = Misc.grid_slaves
+    │   ├── Methods
+    │   │   ├── def grid_configure(self, cnf = {}, **kw)
+    │   │   │   ├── Line: 2919
+    │   │   │   └── Function/method calls: self.tk.call, self._options
+    │   │   ├── def grid_forget(self)
+    │   │   │   ├── Line: 2942
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def grid_remove(self)
+    │   │   │   ├── Line: 2948
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   └── def grid_info(self)
+    │   │       ├── Line: 2952
+    │   │       ├── Assigned variables: d
+    │   │       └── Function/method calls: _splitdict, self.tk.call, self.nametowidget
+    │   └── Documentation
+    │       └── Docstring: Geometry manager Grid.
+
+    Base class to use the methods grid_* in every widget.
+    ├── class BaseWidget(Misc)
+    │   ├── Line: 2969
+    │   ├── Methods
+    │   │   ├── def _setup(self, master, cnf)
+    │   │   │   ├── Line: 2972
+    │   │   │   ├── Assigned variables: master, name, count
+    │   │   │   ├── Instance attributes: self.master, self.tk, self._name, self._w, self.children
+    │   │   │   └── Function/method calls: _get_default_root, self.__class__.__name__.lower, name[-1].isdigit, master._last_child_ids.get, self.master.children[self._name].destroy
+    │   │   ├── def __init__(self, master, widgetName, cnf = {}, kw = {}, extra = ())
+    │   │   │   ├── Line: 3008
+    │   │   │   ├── Assigned variables: cnf, classes, k, v
+    │   │   │   ├── Instance attributes: self.widgetName, self._tclCommands
+    │   │   │   └── Function/method calls: _cnfmerge, self._setup, cnf.items, isinstance, self.tk.call, self._options, k.configure
+    │   │   ├── def destroy(self)
+    │   │   │   ├── Line: 3025
+    │   │   │   ├── Assigned variables: c
+    │   │   │   └── Function/method calls: list, self.children.values, c.destroy, self.tk.call, Misc.destroy
+    │   │   └── def _do(self, name, args = ())
+    │   │       ├── Line: 3033
+    │   │       └── Function/method calls: self.tk.call
+    │   └── Documentation
+    │       └── Docstring: Internal class.
+    ├── class Widget(BaseWidget, Pack, Place, Grid)
+    │   ├── Line: 3038
+    │   └── Documentation
+    │       └── Docstring: Internal class.
+
+    Base class for a widget which can be positioned with the geometry managers
+    Pack, Place or Grid.
+    ├── class Toplevel(BaseWidget, Wm)
+    │   ├── Line: 3046
+    │   ├── Methods
+    │   │   └── def __init__(self, master = None, cnf = {}, **kw)
+    │   │       ├── Line: 3049
+    │   │       ├── Assigned variables: cnf, extra, wmkey, val, opt, root
+    │   │       └── Function/method calls: _cnfmerge, BaseWidget.__init__, self._root, self.iconname, root.iconname, self.title, root.title, self.protocol
+    │   └── Documentation
+    │       └── Docstring: Toplevel widget, e.g. for dialogs.
+    ├── class Button(Widget)
+    │   ├── Line: 3077
+    │   ├── Methods
+    │   │   ├── def __init__(self, master = None, cnf = {}, **kw)
+    │   │   │   ├── Line: 3080
+    │   │   │   └── Function/method calls: Widget.__init__
+    │   │   ├── def flash(self)
+    │   │   │   ├── Line: 3101
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   └── def invoke(self)
+    │   │       ├── Line: 3113
+    │   │       └── Function/method calls: self.tk.call
+    │   └── Documentation
+    │       └── Docstring: Button widget.
+    ├── class Canvas(Widget, XView, YView)
+    │   ├── Line: 3124
+    │   ├── Class attributes / variables
+    │   │   ├── itemconfig = itemconfigure
+    │   │   ├── lower = tag_lower
+    │   │   ├── lift = tag_raise
+    │   │   └── tkraise = tag_raise
+    │   ├── Methods
+    │   │   ├── def __init__(self, master = None, cnf = {}, **kw)
+    │   │   │   ├── Line: 3127
+    │   │   │   └── Function/method calls: Widget.__init__
+    │   │   ├── def tk_print(self)
+    │   │   │   ├── Line: 3139
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def addtag(self, *args)
+    │   │   │   ├── Line: 3145
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def addtag_above(self, newtag, tagOrId)
+    │   │   │   ├── Line: 3149
+    │   │   │   └── Function/method calls: self.addtag
+    │   │   ├── def addtag_all(self, newtag)
+    │   │   │   ├── Line: 3153
+    │   │   │   └── Function/method calls: self.addtag
+    │   │   ├── def addtag_below(self, newtag, tagOrId)
+    │   │   │   ├── Line: 3157
+    │   │   │   └── Function/method calls: self.addtag
+    │   │   ├── def addtag_closest(self, newtag, x, y, halo = None, start = None)
+    │   │   │   ├── Line: 3161
+    │   │   │   └── Function/method calls: self.addtag
+    │   │   ├── def addtag_enclosed(self, newtag, x1, y1, x2, y2)
+    │   │   │   ├── Line: 3168
+    │   │   │   └── Function/method calls: self.addtag
+    │   │   ├── def addtag_overlapping(self, newtag, x1, y1, x2, y2)
+    │   │   │   ├── Line: 3173
+    │   │   │   └── Function/method calls: self.addtag
+    │   │   ├── def addtag_withtag(self, newtag, tagOrId)
+    │   │   │   ├── Line: 3178
+    │   │   │   └── Function/method calls: self.addtag
+    │   │   ├── def bbox(self, *args)
+    │   │   │   ├── Line: 3182
+    │   │   │   └── Function/method calls: self._getints, self.tk.call
+    │   │   ├── def tag_unbind(self, tagOrId, sequence, funcid = None)
+    │   │   │   ├── Line: 3188
+    │   │   │   └── Function/method calls: self._unbind
+    │   │   ├── def tag_bind(self, tagOrId, sequence = None, func = None, add = None)
+    │   │   │   ├── Line: 3193
+    │   │   │   └── Function/method calls: self._bind
+    │   │   ├── def canvasx(self, screenx, gridspacing = None)
+    │   │   │   ├── Line: 3202
+    │   │   │   └── Function/method calls: self.tk.getdouble, self.tk.call
+    │   │   ├── def canvasy(self, screeny, gridspacing = None)
+    │   │   │   ├── Line: 3208
+    │   │   │   └── Function/method calls: self.tk.getdouble, self.tk.call
+    │   │   ├── def coords(self, *args)
+    │   │   │   ├── Line: 3214
+    │   │   │   ├── Assigned variables: args, x
+    │   │   │   └── Function/method calls: _flatten, self.tk.getdouble, self.tk.splitlist, self.tk.call
+    │   │   ├── def _create(self, itemType, args, kw)
+    │   │   │   ├── Line: 3221
+    │   │   │   ├── Assigned variables: args, cnf
+    │   │   │   └── Function/method calls: _flatten, isinstance, self.tk.getint, self.tk.call, self._options
+    │   │   ├── def create_arc(self, *args, **kw)
+    │   │   │   ├── Line: 3233
+    │   │   │   └── Function/method calls: self._create
+    │   │   ├── def create_bitmap(self, *args, **kw)
+    │   │   │   ├── Line: 3237
+    │   │   │   └── Function/method calls: self._create
+    │   │   ├── def create_image(self, *args, **kw)
+    │   │   │   ├── Line: 3241
+    │   │   │   └── Function/method calls: self._create
+    │   │   ├── def create_line(self, *args, **kw)
+    │   │   │   ├── Line: 3245
+    │   │   │   └── Function/method calls: self._create
+    │   │   ├── def create_oval(self, *args, **kw)
+    │   │   │   ├── Line: 3249
+    │   │   │   └── Function/method calls: self._create
+    │   │   ├── def create_polygon(self, *args, **kw)
+    │   │   │   ├── Line: 3253
+    │   │   │   └── Function/method calls: self._create
+    │   │   ├── def create_rectangle(self, *args, **kw)
+    │   │   │   ├── Line: 3257
+    │   │   │   └── Function/method calls: self._create
+    │   │   ├── def create_text(self, *args, **kw)
+    │   │   │   ├── Line: 3261
+    │   │   │   └── Function/method calls: self._create
+    │   │   ├── def create_window(self, *args, **kw)
+    │   │   │   ├── Line: 3265
+    │   │   │   └── Function/method calls: self._create
+    │   │   ├── def dchars(self, *args)
+    │   │   │   ├── Line: 3269
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def delete(self, *args)
+    │   │   │   ├── Line: 3274
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def dtag(self, *args)
+    │   │   │   ├── Line: 3278
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def find(self, *args)
+    │   │   │   ├── Line: 3283
+    │   │   │   └── Function/method calls: self._getints, self.tk.call
+    │   │   ├── def find_above(self, tagOrId)
+    │   │   │   ├── Line: 3288
+    │   │   │   └── Function/method calls: self.find
+    │   │   ├── def find_all(self)
+    │   │   │   ├── Line: 3292
+    │   │   │   └── Function/method calls: self.find
+    │   │   ├── def find_below(self, tagOrId)
+    │   │   │   ├── Line: 3296
+    │   │   │   └── Function/method calls: self.find
+    │   │   ├── def find_closest(self, x, y, halo = None, start = None)
+    │   │   │   ├── Line: 3300
+    │   │   │   └── Function/method calls: self.find
+    │   │   ├── def find_enclosed(self, x1, y1, x2, y2)
+    │   │   │   ├── Line: 3307
+    │   │   │   └── Function/method calls: self.find
+    │   │   ├── def find_overlapping(self, x1, y1, x2, y2)
+    │   │   │   ├── Line: 3312
+    │   │   │   └── Function/method calls: self.find
+    │   │   ├── def find_withtag(self, tagOrId)
+    │   │   │   ├── Line: 3317
+    │   │   │   └── Function/method calls: self.find
+    │   │   ├── def focus(self, *args)
+    │   │   │   ├── Line: 3321
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def gettags(self, *args)
+    │   │   │   ├── Line: 3325
+    │   │   │   └── Function/method calls: self.tk.splitlist, self.tk.call
+    │   │   ├── def icursor(self, *args)
+    │   │   │   ├── Line: 3330
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def index(self, *args)
+    │   │   │   ├── Line: 3335
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def insert(self, *args)
+    │   │   │   ├── Line: 3339
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def itemcget(self, tagOrId, option)
+    │   │   │   ├── Line: 3344
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def itemconfigure(self, tagOrId, cnf = None, **kw)
+    │   │   │   ├── Line: 3349
+    │   │   │   └── Function/method calls: self._configure
+    │   │   ├── def tag_lower(self, *args)
+    │   │   │   ├── Line: 3362
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def move(self, *args)
+    │   │   │   ├── Line: 3369
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def moveto(self, tagOrId, x = '', y = '')
+    │   │   │   ├── Line: 3373
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def postscript(self, cnf = {}, **kw)
+    │   │   │   ├── Line: 3382
+    │   │   │   └── Function/method calls: self.tk.call, self._options
+    │   │   ├── def tag_raise(self, *args)
+    │   │   │   ├── Line: 3390
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def rchars(self, *args)
+    │   │   │   ├── Line: 3397
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def rotate(self, *args)
+    │   │   │   ├── Line: 3406
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def scale(self, *args)
+    │   │   │   ├── Line: 3413
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def scan_mark(self, x, y)
+    │   │   │   ├── Line: 3417
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def scan_dragto(self, x, y, gain = 10)
+    │   │   │   ├── Line: 3421
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def select_adjust(self, tagOrId, index)
+    │   │   │   ├── Line: 3427
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def select_clear(self)
+    │   │   │   ├── Line: 3431
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def select_from(self, tagOrId, index)
+    │   │   │   ├── Line: 3435
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def select_item(self)
+    │   │   │   ├── Line: 3439
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def select_to(self, tagOrId, index)
+    │   │   │   ├── Line: 3443
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   └── def type(self, tagOrId)
+    │   │       ├── Line: 3447
+    │   │       └── Function/method calls: self.tk.call
+    │   └── Documentation
+    │       └── Docstring: Canvas widget to display graphical elements like lines or text.
+    ├── class Checkbutton(Widget)
+    │   ├── Line: 3454
+    │   ├── Methods
+    │   │   ├── def __init__(self, master = None, cnf = {}, **kw)
+    │   │   │   ├── Line: 3457
+    │   │   │   └── Function/method calls: Widget.__init__
+    │   │   ├── def _setup(self, master, cnf)
+    │   │   │   ├── Line: 3470
+    │   │   │   ├── Assigned variables: name, _checkbutton_count
+    │   │   │   └── Function/method calls: cnf.get, self.__class__.__name__.lower, super()._setup, super
+    │   │   ├── def deselect(self)
+    │   │   │   ├── Line: 3483
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def flash(self)
+    │   │   │   ├── Line: 3487
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def invoke(self)
+    │   │   │   ├── Line: 3491
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def select(self)
+    │   │   │   ├── Line: 3495
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   └── def toggle(self)
+    │   │       ├── Line: 3499
+    │   │       └── Function/method calls: self.tk.call
+    │   └── Documentation
+    │       └── Docstring: Checkbutton widget which is either in on- or off-state.
+    ├── class Entry(Widget, XView)
+    │   ├── Line: 3504
+    │   ├── Class attributes / variables
+    │   │   ├── select_adjust = selection_adjust
+    │   │   ├── select_clear = selection_clear
+    │   │   ├── select_from = selection_from
+    │   │   ├── select_present = selection_present
+    │   │   ├── select_range = selection_range
+    │   │   └── select_to = selection_to
+    │   ├── Methods
+    │   │   ├── def __init__(self, master = None, cnf = {}, **kw)
+    │   │   │   ├── Line: 3507
+    │   │   │   └── Function/method calls: Widget.__init__
+    │   │   ├── def delete(self, first, last = None)
+    │   │   │   ├── Line: 3522
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def get(self)
+    │   │   │   ├── Line: 3526
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def icursor(self, index)
+    │   │   │   ├── Line: 3530
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def index(self, index)
+    │   │   │   ├── Line: 3534
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def insert(self, index, string)
+    │   │   │   ├── Line: 3539
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def scan_mark(self, x)
+    │   │   │   ├── Line: 3543
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def scan_dragto(self, x)
+    │   │   │   ├── Line: 3547
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def selection_adjust(self, index)
+    │   │   │   ├── Line: 3553
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def selection_clear(self)
+    │   │   │   ├── Line: 3559
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def selection_from(self, index)
+    │   │   │   ├── Line: 3565
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def selection_present(self)
+    │   │   │   ├── Line: 3571
+    │   │   │   └── Function/method calls: self.tk.getboolean, self.tk.call
+    │   │   ├── def selection_range(self, start, end)
+    │   │   │   ├── Line: 3579
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def selection_to(self, index)
+    │   │   │   ├── Line: 3585
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   └── def validate(self)
+    │   │       ├── Line: 3591
+    │   │       └── Function/method calls: self.tk.getboolean, self.tk.call
+    │   └── Documentation
+    │       └── Docstring: Entry widget which allows displaying simple text.
+    ├── class Frame(Widget)
+    │   ├── Line: 3600
+    │   ├── Methods
+    │   │   └── def __init__(self, master = None, cnf = {}, **kw)
+    │   │       ├── Line: 3603
+    │   │       ├── Assigned variables: cnf, extra
+    │   │       └── Function/method calls: _cnfmerge, Widget.__init__
+    │   └── Documentation
+    │       └── Docstring: Frame widget which may contain other widgets and can have a 3D border.
+    ├── class Label(Widget)
+    │   ├── Line: 3622
+    │   ├── Methods
+    │   │   └── def __init__(self, master = None, cnf = {}, **kw)
+    │   │       ├── Line: 3625
+    │   │       └── Function/method calls: Widget.__init__
+    │   └── Documentation
+    │       └── Docstring: Label widget which can display text and bitmaps.
+    ├── class Listbox(Widget, XView, YView)
+    │   ├── Line: 3647
+    │   ├── Class attributes / variables
+    │   │   ├── select_anchor = selection_anchor
+    │   │   ├── select_clear = selection_clear
+    │   │   ├── select_includes = selection_includes
+    │   │   ├── select_set = selection_set
+    │   │   └── itemconfig = itemconfigure
+    │   ├── Methods
+    │   │   ├── def __init__(self, master = None, cnf = {}, **kw)
+    │   │   │   ├── Line: 3650
+    │   │   │   └── Function/method calls: Widget.__init__
+    │   │   ├── def activate(self, index)
+    │   │   │   ├── Line: 3663
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def bbox(self, index)
+    │   │   │   ├── Line: 3667
+    │   │   │   └── Function/method calls: self._getints, self.tk.call
+    │   │   ├── def curselection(self)
+    │   │   │   ├── Line: 3672
+    │   │   │   └── Function/method calls: self._getints, self.tk.call
+    │   │   ├── def delete(self, first, last = None)
+    │   │   │   ├── Line: 3676
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def get(self, first, last = None)
+    │   │   │   ├── Line: 3680
+    │   │   │   └── Function/method calls: self.tk.splitlist, self.tk.call
+    │   │   ├── def index(self, index)
+    │   │   │   ├── Line: 3688
+    │   │   │   ├── Assigned variables: i
+    │   │   │   └── Function/method calls: self.tk.call, self.tk.getint
+    │   │   ├── def insert(self, index, *elements)
+    │   │   │   ├── Line: 3694
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def nearest(self, y)
+    │   │   │   ├── Line: 3698
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def scan_mark(self, x, y)
+    │   │   │   ├── Line: 3703
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def scan_dragto(self, x, y)
+    │   │   │   ├── Line: 3707
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def see(self, index)
+    │   │   │   ├── Line: 3713
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def selection_anchor(self, index)
+    │   │   │   ├── Line: 3717
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def selection_clear(self, first, last = None)
+    │   │   │   ├── Line: 3723
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def selection_includes(self, index)
+    │   │   │   ├── Line: 3730
+    │   │   │   └── Function/method calls: self.tk.getboolean, self.tk.call
+    │   │   ├── def selection_set(self, first, last = None)
+    │   │   │   ├── Line: 3737
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def size(self)
+    │   │   │   ├── Line: 3744
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def itemcget(self, index, option)
+    │   │   │   ├── Line: 3748
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   └── def itemconfigure(self, index, cnf = None, **kw)
+    │   │       ├── Line: 3753
+    │   │       └── Function/method calls: self._configure
+    │   └── Documentation
+    │       └── Docstring: Listbox widget which can display a list of strings.
+    ├── class Menu(Widget)
+    │   ├── Line: 3763
+    │   ├── Class attributes / variables
+    │   │   └── entryconfig = entryconfigure
+    │   ├── Methods
+    │   │   ├── def __init__(self, master = None, cnf = {}, **kw)
+    │   │   │   ├── Line: 3766
+    │   │   │   └── Function/method calls: Widget.__init__
+    │   │   ├── def tk_popup(self, x, y, entry = '')
+    │   │   │   ├── Line: 3776
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def activate(self, index)
+    │   │   │   ├── Line: 3780
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def add(self, itemType, cnf = {}, **kw)
+    │   │   │   ├── Line: 3784
+    │   │   │   └── Function/method calls: self.tk.call, self._options
+    │   │   ├── def add_cascade(self, cnf = {}, **kw)
+    │   │   │   ├── Line: 3789
+    │   │   │   └── Function/method calls: self.add
+    │   │   ├── def add_checkbutton(self, cnf = {}, **kw)
+    │   │   │   ├── Line: 3793
+    │   │   │   └── Function/method calls: self.add
+    │   │   ├── def add_command(self, cnf = {}, **kw)
+    │   │   │   ├── Line: 3797
+    │   │   │   └── Function/method calls: self.add
+    │   │   ├── def add_radiobutton(self, cnf = {}, **kw)
+    │   │   │   ├── Line: 3801
+    │   │   │   └── Function/method calls: self.add
+    │   │   ├── def add_separator(self, cnf = {}, **kw)
+    │   │   │   ├── Line: 3805
+    │   │   │   └── Function/method calls: self.add
+    │   │   ├── def insert(self, index, itemType, cnf = {}, **kw)
+    │   │   │   ├── Line: 3809
+    │   │   │   └── Function/method calls: self.tk.call, self._options
+    │   │   ├── def insert_cascade(self, index, cnf = {}, **kw)
+    │   │   │   ├── Line: 3814
+    │   │   │   └── Function/method calls: self.insert
+    │   │   ├── def insert_checkbutton(self, index, cnf = {}, **kw)
+    │   │   │   ├── Line: 3818
+    │   │   │   └── Function/method calls: self.insert
+    │   │   ├── def insert_command(self, index, cnf = {}, **kw)
+    │   │   │   ├── Line: 3822
+    │   │   │   └── Function/method calls: self.insert
+    │   │   ├── def insert_radiobutton(self, index, cnf = {}, **kw)
+    │   │   │   ├── Line: 3826
+    │   │   │   └── Function/method calls: self.insert
+    │   │   ├── def insert_separator(self, index, cnf = {}, **kw)
+    │   │   │   ├── Line: 3830
+    │   │   │   └── Function/method calls: self.insert
+    │   │   ├── def delete(self, index1, index2 = None)
+    │   │   │   ├── Line: 3834
+    │   │   │   ├── Assigned variables: index2, num_index1, num_index2, i, c
+    │   │   │   └── Function/method calls: self.index, range, self.entryconfig, str, self.entrycget, self.deletecommand, self.tk.call
+    │   │   ├── def entrycget(self, index, option)
+    │   │   │   ├── Line: 3850
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def entryconfigure(self, index, cnf = None, **kw)
+    │   │   │   ├── Line: 3854
+    │   │   │   └── Function/method calls: self._configure
+    │   │   ├── def index(self, index)
+    │   │   │   ├── Line: 3864
+    │   │   │   ├── Assigned variables: i
+    │   │   │   └── Function/method calls: self.tk.call, self.tk.getint
+    │   │   ├── def invoke(self, index)
+    │   │   │   ├── Line: 3869
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def post(self, x, y)
+    │   │   │   ├── Line: 3874
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def postcascade(self, index)
+    │   │   │   ├── Line: 3878
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def type(self, index)
+    │   │   │   ├── Line: 3886
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def unpost(self)
+    │   │   │   ├── Line: 3890
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def xposition(self, index)
+    │   │   │   ├── Line: 3894
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   └── def yposition(self, index)
+    │   │       ├── Line: 3899
+    │   │       └── Function/method calls: self.tk.getint, self.tk.call
+    │   └── Documentation
+    │       └── Docstring: Menu widget which allows displaying menu bars, pull-down menus and pop-up menus.
+    ├── class Menubutton(Widget)
+    │   ├── Line: 3905
+    │   ├── Methods
+    │   │   └── def __init__(self, master = None, cnf = {}, **kw)
+    │   │       ├── Line: 3908
+    │   │       └── Function/method calls: Widget.__init__
+    │   └── Documentation
+    │       └── Docstring: Menubutton widget, obsolete since Tk8.0.
+    ├── class Message(Widget)
+    │   ├── Line: 3920
+    │   ├── Methods
+    │   │   └── def __init__(self, master = None, cnf = {}, **kw)
+    │   │       ├── Line: 3923
+    │   │       └── Function/method calls: Widget.__init__
+    │   └── Documentation
+    │       └── Docstring: Message widget to display multiline text. Obsolete since Label does it too.
+    ├── class Radiobutton(Widget)
+    │   ├── Line: 3933
+    │   ├── Methods
+    │   │   ├── def __init__(self, master = None, cnf = {}, **kw)
+    │   │   │   ├── Line: 3936
+    │   │   │   └── Function/method calls: Widget.__init__
+    │   │   ├── def deselect(self)
+    │   │   │   ├── Line: 3949
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def flash(self)
+    │   │   │   ├── Line: 3954
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def invoke(self)
+    │   │   │   ├── Line: 3958
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   └── def select(self)
+    │   │       ├── Line: 3962
+    │   │       └── Function/method calls: self.tk.call
+    │   └── Documentation
+    │       └── Docstring: Radiobutton widget which shows only one of several buttons in on-state.
+    ├── class Scale(Widget)
+    │   ├── Line: 3967
+    │   ├── Methods
+    │   │   ├── def __init__(self, master = None, cnf = {}, **kw)
+    │   │   │   ├── Line: 3970
+    │   │   │   └── Function/method calls: Widget.__init__
+    │   │   ├── def get(self)
+    │   │   │   ├── Line: 3981
+    │   │   │   ├── Assigned variables: value
+    │   │   │   └── Function/method calls: self.tk.call, self.tk.getint, self.tk.getdouble
+    │   │   ├── def set(self, value)
+    │   │   │   ├── Line: 3989
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def coords(self, value = None)
+    │   │   │   ├── Line: 3993
+    │   │   │   └── Function/method calls: self._getints, self.tk.call
+    │   │   └── def identify(self, x, y)
+    │   │       ├── Line: 4000
+    │   │       └── Function/method calls: self.tk.call
+    │   └── Documentation
+    │       └── Docstring: Scale widget which can display a numerical scale.
+    ├── class Scrollbar(Widget)
+    │   ├── Line: 4006
+    │   ├── Methods
+    │   │   ├── def __init__(self, master = None, cnf = {}, **kw)
+    │   │   │   ├── Line: 4009
+    │   │   │   └── Function/method calls: Widget.__init__
+    │   │   ├── def activate(self, index = None)
+    │   │   │   ├── Line: 4020
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def delta(self, deltax, deltay)
+    │   │   │   ├── Line: 4029
+    │   │   │   └── Function/method calls: self.tk.getdouble, self.tk.call
+    │   │   ├── def fraction(self, x, y)
+    │   │   │   ├── Line: 4035
+    │   │   │   └── Function/method calls: self.tk.getdouble, self.tk.call
+    │   │   ├── def identify(self, x, y)
+    │   │   │   ├── Line: 4040
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def get(self)
+    │   │   │   ├── Line: 4045
+    │   │   │   └── Function/method calls: self._getdoubles, self.tk.call
+    │   │   └── def set(self, first, last)
+    │   │       ├── Line: 4050
+    │   │       └── Function/method calls: self.tk.call
+    │   └── Documentation
+    │       └── Docstring: Scrollbar widget which displays a slider at a certain position.
+    ├── class Text(Widget, XView, YView)
+    │   ├── Line: 4056
+    │   ├── Class attributes / variables
+    │   │   ├── tag_config = tag_configure
+    │   │   └── window_config = window_configure
+    │   ├── Methods
+    │   │   ├── def __init__(self, master = None, cnf = {}, **kw)
+    │   │   │   ├── Line: 4059
+    │   │   │   └── Function/method calls: Widget.__init__
+    │   │   ├── def tk_print(self)
+    │   │   │   ├── Line: 4086
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def bbox(self, index)
+    │   │   │   ├── Line: 4092
+    │   │   │   └── Function/method calls: self._getints, self.tk.call
+    │   │   ├── def compare(self, index1, op, index2)
+    │   │   │   ├── Line: 4098
+    │   │   │   └── Function/method calls: self.tk.getboolean, self.tk.call
+    │   │   ├── def count(self, index1, index2, *options, return_ints = False)
+    │   │   │   ├── Line: 4104
+    │   │   │   ├── Assigned variables: options, arg, res
+    │   │   │   └── Function/method calls: self.tk.call, isinstance, self._getints, len
+    │   │   ├── def debug(self, boolean = None)
+    │   │   │   ├── Line: 4134
+    │   │   │   └── Function/method calls: self.tk.getboolean, self.tk.call
+    │   │   ├── def delete(self, index1, index2 = None)
+    │   │   │   ├── Line: 4141
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def dlineinfo(self, index)
+    │   │   │   ├── Line: 4145
+    │   │   │   └── Function/method calls: self._getints, self.tk.call
+    │   │   ├── def dump(self, index1, index2 = None, command = None, **kw)
+    │   │   │   ├── Line: 4151
+    │   │   │   ├── Assigned variables: args, func_name, result, command, key
+    │   │   │   ├── Function/method calls: isinstance, self._register, args.append, self.tk.call, self.deletecommand
+    │   │   │   └── Nested definition: def append_triple() [line 4172]
+    │   │   ├── def edit(self, *args)
+    │   │   │   ├── Line: 4191
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def edit_canredo(self)
+    │   │   │   ├── Line: 4206
+    │   │   │   └── Function/method calls: self.tk.getboolean, self.edit
+    │   │   ├── def edit_canundo(self)
+    │   │   │   ├── Line: 4214
+    │   │   │   └── Function/method calls: self.tk.getboolean, self.edit
+    │   │   ├── def edit_modified(self, arg = None)
+    │   │   │   ├── Line: 4222
+    │   │   │   └── Function/method calls: self.tk.getboolean, self.edit
+    │   │   ├── def edit_redo(self)
+    │   │   │   ├── Line: 4235
+    │   │   │   └── Function/method calls: self.edit
+    │   │   ├── def edit_reset(self)
+    │   │   │   ├── Line: 4245
+    │   │   │   └── Function/method calls: self.edit
+    │   │   ├── def edit_separator(self)
+    │   │   │   ├── Line: 4250
+    │   │   │   └── Function/method calls: self.edit
+    │   │   ├── def edit_undo(self)
+    │   │   │   ├── Line: 4257
+    │   │   │   └── Function/method calls: self.edit
+    │   │   ├── def get(self, index1, index2 = None)
+    │   │   │   ├── Line: 4268
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def image_cget(self, index, option)
+    │   │   │   ├── Line: 4273
+    │   │   │   ├── Assigned variables: option
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def image_configure(self, index, cnf = None, **kw)
+    │   │   │   ├── Line: 4281
+    │   │   │   └── Function/method calls: self._configure
+    │   │   ├── def image_create(self, index, cnf = {}, **kw)
+    │   │   │   ├── Line: 4289
+    │   │   │   └── Function/method calls: self.tk.call, self._options
+    │   │   ├── def image_names(self)
+    │   │   │   ├── Line: 4295
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def index(self, index)
+    │   │   │   ├── Line: 4299
+    │   │   │   └── Function/method calls: str, self.tk.call
+    │   │   ├── def insert(self, index, chars, *args)
+    │   │   │   ├── Line: 4303
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def mark_gravity(self, markName, direction = None)
+    │   │   │   ├── Line: 4308
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def mark_names(self)
+    │   │   │   ├── Line: 4314
+    │   │   │   └── Function/method calls: self.tk.splitlist, self.tk.call
+    │   │   ├── def mark_set(self, markName, index)
+    │   │   │   ├── Line: 4319
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def mark_unset(self, *markNames)
+    │   │   │   ├── Line: 4323
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def mark_next(self, index)
+    │   │   │   ├── Line: 4327
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def mark_previous(self, index)
+    │   │   │   ├── Line: 4331
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def peer_create(self, newPathName, cnf = {}, **kw)
+    │   │   │   ├── Line: 4335
+    │   │   │   └── Function/method calls: self.tk.call, self._options
+    │   │   ├── def peer_names(self)
+    │   │   │   ├── Line: 4343
+    │   │   │   └── Function/method calls: self.tk.splitlist, self.tk.call
+    │   │   ├── def pendingsync(self)
+    │   │   │   ├── Line: 4348
+    │   │   │   └── Function/method calls: self.tk.getboolean, self.tk.call
+    │   │   ├── def sync(self, command = None)
+    │   │   │   ├── Line: 4356
+    │   │   │   ├── Assigned variables: name
+    │   │   │   ├── Function/method calls: self.tk.call, type, self._register
+    │   │   │   └── Nested definition: def callit() [line 4371]
+    │   │   ├── def replace(self, index1, index2, chars, *args)
+    │   │   │   ├── Line: 4386
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def scan_mark(self, x, y)
+    │   │   │   ├── Line: 4394
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def scan_dragto(self, x, y)
+    │   │   │   ├── Line: 4398
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def search(self, pattern, index, stopindex = None, forwards = None, backwards = None, exact = None, regexp = None, nocase = None, count = None, elide = None, *, nolinestop = None, strictlimits = None)
+    │   │   │   ├── Line: 4404
+    │   │   │   ├── Assigned variables: args
+    │   │   │   └── Function/method calls: args.append, str, self.tk.call, tuple
+    │   │   ├── def search_all(self, pattern, index, stopindex = None, *, forwards = None, backwards = None, exact = None, regexp = None, nocase = None, count = None, elide = None, nolinestop = None, overlap = None, strictlimits = None)
+    │   │   │   ├── Line: 4427
+    │   │   │   ├── Assigned variables: args, result
+    │   │   │   └── Function/method calls: args.append, self.tk.call, tuple, self.tk.splitlist
+    │   │   ├── def see(self, index)
+    │   │   │   ├── Line: 4452
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def tag_add(self, tagName, index1, *args)
+    │   │   │   ├── Line: 4456
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def tag_unbind(self, tagName, sequence, funcid = None)
+    │   │   │   ├── Line: 4462
+    │   │   │   └── Function/method calls: self._unbind
+    │   │   ├── def tag_bind(self, tagName, sequence, func, add = None)
+    │   │   │   ├── Line: 4467
+    │   │   │   └── Function/method calls: self._bind
+    │   │   ├── def _tag_bind(self, tagName, sequence = None, func = None, add = None)
+    │   │   │   ├── Line: 4476
+    │   │   │   └── Function/method calls: self._bind
+    │   │   ├── def tag_cget(self, tagName, option)
+    │   │   │   ├── Line: 4481
+    │   │   │   ├── Assigned variables: option
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def tag_configure(self, tagName, cnf = None, **kw)
+    │   │   │   ├── Line: 4489
+    │   │   │   └── Function/method calls: self._configure
+    │   │   ├── def tag_delete(self, *tagNames)
+    │   │   │   ├── Line: 4498
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def tag_lower(self, tagName, belowThis = None)
+    │   │   │   ├── Line: 4502
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def tag_names(self, index = None)
+    │   │   │   ├── Line: 4507
+    │   │   │   └── Function/method calls: self.tk.splitlist, self.tk.call
+    │   │   ├── def tag_nextrange(self, tagName, index1, index2 = None)
+    │   │   │   ├── Line: 4512
+    │   │   │   └── Function/method calls: self.tk.splitlist, self.tk.call
+    │   │   ├── def tag_prevrange(self, tagName, index1, index2 = None)
+    │   │   │   ├── Line: 4519
+    │   │   │   └── Function/method calls: self.tk.splitlist, self.tk.call
+    │   │   ├── def tag_raise(self, tagName, aboveThis = None)
+    │   │   │   ├── Line: 4526
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def tag_ranges(self, tagName)
+    │   │   │   ├── Line: 4532
+    │   │   │   └── Function/method calls: self.tk.splitlist, self.tk.call
+    │   │   ├── def tag_remove(self, tagName, index1, index2 = None)
+    │   │   │   ├── Line: 4537
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def window_cget(self, index, option)
+    │   │   │   ├── Line: 4542
+    │   │   │   ├── Assigned variables: option
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def window_configure(self, index, cnf = None, **kw)
+    │   │   │   ├── Line: 4550
+    │   │   │   └── Function/method calls: self._configure
+    │   │   ├── def window_create(self, index, cnf = {}, **kw)
+    │   │   │   ├── Line: 4560
+    │   │   │   └── Function/method calls: self.tk.call, self._options
+    │   │   ├── def window_names(self)
+    │   │   │   ├── Line: 4566
+    │   │   │   └── Function/method calls: self.tk.splitlist, self.tk.call
+    │   │   └── def yview_pickplace(self, *what)
+    │   │       ├── Line: 4571
+    │   │       └── Function/method calls: self.tk.call
+    │   └── Documentation
+    │       └── Docstring: Text widget which can display text in various forms.
+    ├── class _setit
+    │   ├── Line: 4576
+    │   ├── Methods
+    │   │   ├── def __init__(self, var, value, callback = None)
+    │   │   │   ├── Line: 4579
+    │   │   │   └── Instance attributes: self.__value, self.__var, self.__callback
+    │   │   └── def __call__(self, *args)
+    │   │       ├── Line: 4584
+    │   │       └── Function/method calls: self.__var.set, self.__callback
+    │   └── Documentation
+    │       └── Docstring: Internal class. It wraps the command in the widget OptionMenu.
+    ├── class OptionMenu(Menubutton)
+    │   ├── Line: 4590
+    │   ├── Methods
+    │   │   ├── def __init__(self, master, variable, value, *values, **kwargs)
+    │   │   │   ├── Line: 4593
+    │   │   │   ├── Assigned variables: name, callback, kw, menu, v
+    │   │   │   ├── Instance attributes: self.widgetName, self.__menu, self.menuname
+    │   │   │   └── Function/method calls: kwargs.pop, kw.update, Widget.__init__, Menu, menu.add_command, _setit
+    │   │   ├── def __getitem__(self, name)
+    │   │   │   ├── Line: 4621
+    │   │   │   └── Function/method calls: Widget.__getitem__
+    │   │   └── def destroy(self)
+    │   │       ├── Line: 4626
+    │   │       ├── Instance attributes: self.__menu
+    │   │       └── Function/method calls: Menubutton.destroy
+    │   └── Documentation
+    │       └── Docstring: OptionMenu which allows the user to select a value from a menu.
+    ├── class Image
+    │   ├── Line: 4632
+    │   ├── Class attributes / variables
+    │   │   ├── _last_id = 0
+    │   │   ├── __iter__ = None
+    │   │   └── config = configure
+    │   ├── Methods
+    │   │   ├── def __init__(self, imgtype, name = None, cnf = {}, master = None, **kw)
+    │   │   │   ├── Line: 4636
+    │   │   │   ├── Assigned variables: master, name, cnf, options, k, v
+    │   │   │   ├── Instance attributes: self.name, self.tk
+    │   │   │   └── Function/method calls: _get_default_root, getattr, _cnfmerge, cnf.items, self.tk.call
+    │   │   ├── def __str__(self)
+    │   │   │   └── Line: 4652
+    │   │   ├── def __del__(self)
+    │   │   │   ├── Line: 4654
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def __setitem__(self, key, value)
+    │   │   │   ├── Line: 4662
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def __getitem__(self, key)
+    │   │   │   ├── Line: 4665
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def configure(self, **kw)
+    │   │   │   ├── Line: 4670
+    │   │   │   ├── Assigned variables: res, k, v
+    │   │   │   └── Function/method calls: _cnfmerge(kw).items, _cnfmerge, self.tk.call
+    │   │   ├── def height(self)
+    │   │   │   ├── Line: 4681
+    │   │   │   └── Function/method calls: self.tk.getint, self.tk.call
+    │   │   ├── def type(self)
+    │   │   │   ├── Line: 4686
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   └── def width(self)
+    │   │       ├── Line: 4690
+    │   │       └── Function/method calls: self.tk.getint, self.tk.call
+    │   └── Documentation
+    │       └── Docstring: Base class for images.
+    ├── class PhotoImage(Image)
+    │   ├── Line: 4696
+    │   ├── Methods
+    │   │   ├── def __init__(self, name = None, cnf = {}, master = None, **kw)
+    │   │   │   ├── Line: 4699
+    │   │   │   └── Function/method calls: Image.__init__
+    │   │   ├── def blank(self)
+    │   │   │   ├── Line: 4706
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def redither(self)
+    │   │   │   ├── Line: 4710
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def cget(self, option)
+    │   │   │   ├── Line: 4717
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def __getitem__(self, key)
+    │   │   │   ├── Line: 4722
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def copy(self, *, from_coords = None, zoom = None, subsample = None)
+    │   │   │   ├── Line: 4725
+    │   │   │   ├── Assigned variables: destImage
+    │   │   │   └── Function/method calls: PhotoImage, destImage.copy_replace
+    │   │   ├── def zoom(self, x, y = '', *, from_coords = None)
+    │   │   │   ├── Line: 4747
+    │   │   │   ├── Assigned variables: y
+    │   │   │   └── Function/method calls: self.copy
+    │   │   ├── def subsample(self, x, y = '', *, from_coords = None)
+    │   │   │   ├── Line: 4758
+    │   │   │   ├── Assigned variables: y
+    │   │   │   └── Function/method calls: self.copy
+    │   │   ├── def copy_replace(self, sourceImage, *, from_coords = None, to = None, shrink = False, zoom = None, subsample = None, compositingrule = None)
+    │   │   │   ├── Line: 4769
+    │   │   │   ├── Assigned variables: options, zoom, subsample
+    │   │   │   └── Function/method calls: options.extend, options.append, isinstance, self.tk.call
+    │   │   ├── def _metadata(metadata)
+    │   │   │   ├── Line: 4832
+    │   │   │   ├── Decorator: @staticmethod
+    │   │   │   ├── Assigned variables: flat, key, value
+    │   │   │   └── Function/method calls: metadata.items
+    │   │   ├── def get(self, x, y, *, withalpha = False)
+    │   │   │   ├── Line: 4840
+    │   │   │   ├── Assigned variables: args
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def put(self, data, to = None, *, format = None, metadata = None)
+    │   │   │   ├── Line: 4853
+    │   │   │   ├── Assigned variables: args, to
+    │   │   │   └── Function/method calls: self._metadata, tuple, self.tk.call
+    │   │   ├── def read(self, filename, format = None, *, from_coords = None, to = None, shrink = False, metadata = None)
+    │   │   │   ├── Line: 4874
+    │   │   │   ├── Assigned variables: options
+    │   │   │   └── Function/method calls: self._metadata, self.tk.call
+    │   │   ├── def write(self, filename, format = None, from_coords = None, *, background = None, grayscale = False, metadata = None)
+    │   │   │   ├── Line: 4913
+    │   │   │   ├── Assigned variables: options
+    │   │   │   └── Function/method calls: self._metadata, self.tk.call
+    │   │   ├── def data(self, format = None, *, from_coords = None, background = None, grayscale = False, metadata = None)
+    │   │   │   ├── Line: 4952
+    │   │   │   ├── Assigned variables: options, data
+    │   │   │   └── Function/method calls: self._metadata, self.tk.call, isinstance, self.tk.splitlist, bytes
+    │   │   ├── def transparency_get(self, x, y)
+    │   │   │   ├── Line: 5001
+    │   │   │   └── Function/method calls: self.tk.getboolean, self.tk.call
+    │   │   └── def transparency_set(self, x, y, boolean)
+    │   │       ├── Line: 5006
+    │   │       └── Function/method calls: self.tk.call
+    │   └── Documentation
+    │       └── Docstring: Widget which can display images in PGM, PPM, GIF, PNG format.
+    ├── class BitmapImage(Image)
+    │   ├── Line: 5011
+    │   ├── Methods
+    │   │   └── def __init__(self, name = None, cnf = {}, master = None, **kw)
+    │   │       ├── Line: 5014
+    │   │       └── Function/method calls: Image.__init__
+    │   └── Documentation
+    │       └── Docstring: Widget which can display images in XBM format.
+    ├── class Spinbox(Widget, XView)
+    │   ├── Line: 5031
+    │   ├── Methods
+    │   │   ├── def __init__(self, master = None, cnf = {}, **kw)
+    │   │   │   ├── Line: 5034
+    │   │   │   └── Function/method calls: Widget.__init__
+    │   │   ├── def bbox(self, index)
+    │   │   │   ├── Line: 5066
+    │   │   │   └── Function/method calls: self._getints, self.tk.call
+    │   │   ├── def delete(self, first, last = None)
+    │   │   │   ├── Line: 5080
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def get(self)
+    │   │   │   ├── Line: 5091
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def icursor(self, index)
+    │   │   │   ├── Line: 5095
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def identify(self, x, y)
+    │   │   │   ├── Line: 5103
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def index(self, index)
+    │   │   │   ├── Line: 5110
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def insert(self, index, s)
+    │   │   │   ├── Line: 5115
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def invoke(self, element)
+    │   │   │   ├── Line: 5122
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def scan(self, *args)
+    │   │   │   ├── Line: 5130
+    │   │   │   └── Function/method calls: self._getints, self.tk.call
+    │   │   ├── def scan_mark(self, x)
+    │   │   │   ├── Line: 5135
+    │   │   │   └── Function/method calls: self.scan
+    │   │   ├── def scan_dragto(self, x)
+    │   │   │   ├── Line: 5144
+    │   │   │   └── Function/method calls: self.scan
+    │   │   ├── def selection(self, *args)
+    │   │   │   ├── Line: 5156
+    │   │   │   └── Function/method calls: self._getints, self.tk.call
+    │   │   ├── def selection_adjust(self, index)
+    │   │   │   ├── Line: 5161
+    │   │   │   └── Function/method calls: self.selection
+    │   │   ├── def selection_clear(self)
+    │   │   │   ├── Line: 5175
+    │   │   │   └── Function/method calls: self.selection
+    │   │   ├── def selection_element(self, element = None)
+    │   │   │   ├── Line: 5183
+    │   │   │   └── Function/method calls: self.tk.call
+    │   │   ├── def selection_from(self, index)
+    │   │   │   ├── Line: 5191
+    │   │   │   └── Function/method calls: self.selection
+    │   │   ├── def selection_present(self)
+    │   │   │   ├── Line: 5195
+    │   │   │   └── Function/method calls: self.tk.getboolean, self.tk.call
+    │   │   ├── def selection_range(self, start, end)
+    │   │   │   ├── Line: 5201
+    │   │   │   └── Function/method calls: self.selection
+    │   │   ├── def selection_to(self, index)
+    │   │   │   ├── Line: 5205
+    │   │   │   └── Function/method calls: self.selection
+    │   │   └── def validate(self)
+    │   │       ├── Line: 5209
+    │   │       └── Function/method calls: self.tk.getboolean, self.tk.call
+    │   └── Documentation
+    │       └── Docstring: spinbox widget.
+    ├── class LabelFrame(Widget)
+    │   ├── Line: 5220
+    │   ├── Methods
+    │   │   └── def __init__(self, master = None, cnf = {}, **kw)
+    │   │       ├── Line: 5223
+    │   │       └── Function/method calls: Widget.__init__
+    │   └── Documentation
+    │       └── Docstring: labelframe widget.
+    └── class PanedWindow(Widget)
+        ├── Line: 5244
+        ├── Class attributes / variables
+        │   ├── forget = remove
+        │   └── paneconfig = paneconfigure
+        ├── Methods
+        │   ├── def __init__(self, master = None, cnf = {}, **kw)
+        │   │   ├── Line: 5247
+        │   │   └── Function/method calls: Widget.__init__
+        │   ├── def add(self, child, **kw)
+        │   │   ├── Line: 5264
+        │   │   └── Function/method calls: self.tk.call, self._options
+        │   ├── def remove(self, child)
+        │   │   ├── Line: 5274
+        │   │   └── Function/method calls: self.tk.call
+        │   ├── def identify(self, x, y)
+        │   │   ├── Line: 5283
+        │   │   └── Function/method calls: self.tk.call
+        │   ├── def proxy(self, *args)
+        │   │   ├── Line: 5295
+        │   │   └── Function/method calls: self._getints, self.tk.call
+        │   ├── def proxy_coord(self)
+        │   │   ├── Line: 5300
+        │   │   └── Function/method calls: self.proxy
+        │   ├── def proxy_forget(self)
+        │   │   ├── Line: 5305
+        │   │   └── Function/method calls: self.proxy
+        │   ├── def proxy_place(self, x, y)
+        │   │   ├── Line: 5310
+        │   │   └── Function/method calls: self.proxy
+        │   ├── def sash(self, *args)
+        │   │   ├── Line: 5315
+        │   │   └── Function/method calls: self._getints, self.tk.call
+        │   ├── def sash_coord(self, index)
+        │   │   ├── Line: 5320
+        │   │   └── Function/method calls: self.sash
+        │   ├── def sash_mark(self, index)
+        │   │   ├── Line: 5334
+        │   │   └── Function/method calls: self.sash
+        │   ├── def sash_place(self, index, x, y)
+        │   │   ├── Line: 5341
+        │   │   └── Function/method calls: self.sash
+        │   ├── def panecget(self, child, option)
+        │   │   ├── Line: 5346
+        │   │   └── Function/method calls: self.tk.call
+        │   ├── def paneconfigure(self, child = None, cnf = None, **kw)
+        │   │   ├── Line: 5351
+        │   │   ├── Assigned variables: child
+        │   │   └── Function/method calls: TypeError, warnings.warn, kw.pop, self._getconfigure, isinstance, self._getconfigure1, self.tk.call, self._options
+        │   └── def panes(self)
+        │       ├── Line: 5437
+        │       └── Function/method calls: self.tk.splitlist, self.tk.call
+        └── Documentation
+            └── Docstring: panedwindow widget.
